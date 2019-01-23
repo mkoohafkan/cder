@@ -56,7 +56,7 @@ query_cdec = function(stations, sensors, durations, start.date, end.date) {
   }
   # query
   result = basic_query(
-    glue("http://cdec.water.ca.gov/dynamicapp/req/JSONDataServlet?",
+    glue("https://cdec.water.ca.gov/dynamicapp/req/JSONDataServlet?",
       "{station.comp}", "{sensor.comp}", "{duration.comp}",
       "{start.comp}", "{end.comp}")
   )
