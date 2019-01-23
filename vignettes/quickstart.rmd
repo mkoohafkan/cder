@@ -1,22 +1,31 @@
 ---
-title: "Getting started with cder"
-output: html_document
+title: "Quick Start with CDER"
+author: "Michael Koohafkan"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Quick Start}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 ---
 
-The R package `cder` provides a simple interface to the CDEC JSON 
-Webservice. 
 
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  echo = TRUE
+)
+```
+
+The R package `cder` provides a simple interface to the CDEC JSON 
+Webservice. Getting CDEC data with `cder` is easy, just pass a 
+station code to `query_cdec`:
 
 ```{r}
 library(cder)
-```
-
-Getting CDEC data with `cder` is easy. Just pass a station code
-to `query_cdec`:
-
-```{r}
 # get data for CDEC station NSL 
-query_cdec("NSL", sensor, duration, start.date, end.date)
+query_cdec("NSL")
 ```
 
 The CDEC web service uses some default values for the duration code,
