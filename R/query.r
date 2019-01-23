@@ -14,6 +14,9 @@
 #'   reflected. In R, this is equivalent to the timezone 
 #'   "Etc/GMT-8".
 #'
+#' @examples
+#' query_cdec("NSL", 100, "E", Sys.Date() - 5, Sys.Date())
+#'
 #' @importFrom tibble tibble as_tibble
 #' @importFrom dplyr transmute if_else near
 #' @importFrom stringr str_c str_trim str_to_upper str_sub

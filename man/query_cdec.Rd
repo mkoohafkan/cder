@@ -29,3 +29,7 @@ Standard Time, i.e. daylight savings adjustments are not
 reflected. In R, this is equivalent to the timezone
 "Etc/GMT-8".
 }
+\examples{
+query_cdec("NSL", 100, "E", Sys.Date() - 5, Sys.Date())
+
+}
