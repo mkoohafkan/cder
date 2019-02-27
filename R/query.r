@@ -18,7 +18,7 @@
 #' query_cdec("NSL", 100, "E", Sys.Date() - 5, Sys.Date())
 #'
 #' @importFrom tibble tibble as_tibble
-#' @importFrom dplyr transmute if_else near
+#' @importFrom dplyr rename transmute if_else near
 #' @importFrom stringr str_c str_trim str_to_upper str_sub
 #' @importFrom lubridate ymd_hms as_date
 #' @importFrom glue glue
@@ -56,37 +56,21 @@ query_cdec = function(stations, sensors, durations, start.date, end.date) {
   }
   # query
   result = basic_query(
-    glue("https://cdec.water.ca.gov/dynamicapp/req/JSONDataServlet?",
+    glue("https://cdec.water.ca.gov/dynamicapp/req/CSVDataServlet?",
       "{station.comp}", "{sensor.comp}", "{duration.comp}",
       "{start.comp}", "{end.comp}")
   )
-  if (identical(result, list())) {
-    warning("Query returned empty dataset.", call. = FALSE)
-    tibble(
-      StationID = character(0),
-      DateTime = ymd_hms(numeric(0), tz = cdec.tz),
-      SensorType = character(0),
-      Value = numeric(0),
-      DataFlag = character(0),
-      SensorUnits = character(0),
-      SensorNum = integer(0),
-      SensorID = integer(0),
-      Duration = character(0)
-    )
-  } else {
-    transmute(as_tibble(result),
-      StationID = .data$stationId,
-      DateTime = ymd_hms(.data$date, truncated = 1L, tz = cdec.tz),
-      SensorType = .data$sensorType,
-      Value = if_else(near(.data$value, -9999), NA_real_,
-        as.numeric(.data$value)),
-      DataFlag = str_trim(.data$dataFlag),
-      SensorUnits = .data$units,
-      SensorNum = .data$SENSOR_NUM,
-      SensorID = .data$SENSOR_ID,
-      Duration = .data$durCode
-    )
-  }
+  rename(result,
+    StationID = .data$STATION_ID,
+    DateTime = .data$`DATE TIME`,
+    SensorType = .data$SENSOR_TYPE,
+    Value = .data$VALUE,
+    DataFlag = .data$DATA_FLAG,
+    SensorUnits = .data$UNITS,
+    SensorNumber = .data$SENSOR_NUMBER,
+    Duration = .data$DURATION,
+    ObsDate = .data$`OBS DATE`
+  )
 }
 
 #' Basic Query
@@ -97,7 +81,7 @@ query_cdec = function(stations, sensors, durations, start.date, end.date) {
 #' @return The parsed JSON string, as a list.
 #'
 #' @importFrom RCurl getURL basicHeaderGatherer basicTextGatherer curlOptions
-#' @importFrom jsonlite fromJSON
+#' @importFrom readr locale read_csv cols col_character col_integer col_datetime col_double
 #' @importFrom stringr str_replace_all
 #' @keywords internal
 basic_query = function(url) {
@@ -115,7 +99,12 @@ basic_query = function(url) {
       header$value()[["statusMessage"]], "\n",
       parse(text = content$value()), call. = FALSE)
 
-  fromJSON(str_replace_all(content$value(), ":null", ':[null]'),
-    simplifyDataFrame = TRUE)
+  read_csv(content$value(), locale = locale(tz = "US/Pacific"),
+    na = "---", col_types = cols( 
+      STATION_ID = col_character(), DURATION = col_character(),
+      SENSOR_NUMBER = col_integer(), SENSOR_TYPE = col_character(),
+      `DATE TIME` = col_datetime(), `OBS DATE` = col_datetime(),
+      VALUE = col_double(), DATA_FLAG = col_character(),
+      UNITS = col_character()))
 }
 
