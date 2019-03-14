@@ -1,0 +1,59 @@
+---
+title: "Quick Start with CDER"
+author: "Michael Koohafkan"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Quick Start}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  echo = TRUE
+)
+```
+
+The R package `cder` provides a simple interface to the CDEC JSON 
+Webservice. Getting CDEC data with `cder` is easy, just pass a 
+station code to `query_cdec`:
+
+```{r}
+library(cder)
+# get data for CDEC station NSL 
+query_cdec("NSL")
+```
+
+The CDEC web service uses some default values for the duration code,
+sensor number, and start/end dates. You can also specify these in 
+the call to `query_cdec`:
+
+```{r}
+station = "NSL"
+duration = "event"
+sensor = 100 # electrical conductivity
+start.date = Sys.Date() - 14
+end.date = Sys.Date()
+
+query_cdec(station, sensor, duration, start.date, end.date)
+```
+
+The web service supports multiple stations, sensors, and even 
+duration codes:
+
+```{r}
+# get data for CDEC stations NSL and HUN
+stations = c("NSL", "HUN")
+# get electrical conductivity and stage
+sensors = c(100, 1)
+# get event data and hourly averages (where available)
+durations = c("event", "hourly")
+
+query_cdec(stations, sensors, durations)
+```
+
+That's it!
