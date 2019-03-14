@@ -15,10 +15,7 @@
 #' @name cder
 "_PACKAGE"
 
-#' @importFrom RCurl getCurlHandle
 .onLoad = function(libname, pkgname) {
-  assign("cdec.handle", getCurlHandle(),
-    envir = getNamespace(pkgname))
   assign("cdec.tz", "Etc/GMT-8", envir = getNamespace(pkgname))
 }
 

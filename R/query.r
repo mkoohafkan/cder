@@ -90,7 +90,7 @@ basic_query = function(url) {
   opts = curlOptions(connecttimeout = options()[["cder.timeout"]])
   getURL(url, httpheader = c(Accept = "application/json"),
     header = FALSE, headerfunction = header$update,
-    write = content$update, curl = cdec.handle,
+    write = content$update, curl = cder_handle(),
     .opts = opts)
 
   if (header$value()[['status']] != "200")
@@ -108,3 +108,12 @@ basic_query = function(url) {
       UNITS = col_character()))
 }
 
+#' cder RCurl handle
+#'
+#' Get the handle for RCurl URL handling in cder.
+#'
+#' @importFrom RCurl getCurlHandle
+#' @keywords internal
+cder_handle = function() {
+  getCurlHandle()
+}
