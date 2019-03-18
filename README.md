@@ -1,7 +1,4 @@
----
-title: "cder: R Interface to CDEC"
-output: html_document
----
+# cder: Interface to CDEC <a href='https://github.com/mkoohafkan/cder'><img src='man/figures/logo.png' align="right" height="139" /></a>
 
 [![Build Status](https://travis-ci.org/mkoohafkan/cder.svg?branch=master)](https://travis-ci.org/mkoohafkan/cimir)
 
