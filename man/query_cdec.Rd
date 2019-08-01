@@ -30,6 +30,8 @@ reflected. In R, this is equivalent to the timezone
 "Etc/GMT-8".
 }
 \examples{
-query_cdec("NSL", 100, "E", Sys.Date() - 5, Sys.Date())
+if(interactive()){
+  query_cdec("NSL", 100, "E", Sys.Date() - 5, Sys.Date())
+}
 
 }

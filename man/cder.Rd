@@ -22,8 +22,8 @@ from the CDEC Web API.
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://github.com/mkoohafkan/cimir}
-  \item Report bugs at \url{https://github.com/mkoohafkan/cimir/issues}
+  \item \url{https://github.com/mkoohafkan/cder}
+  \item Report bugs at \url{https://github.com/mkoohafkan/cder/issues}
 }
 
 }
