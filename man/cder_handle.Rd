@@ -2,11 +2,11 @@
 % Please edit documentation in R/query.r
 \name{cder_handle}
 \alias{cder_handle}
-\title{cder RCurl handle}
+\title{cder curl handle}
 \usage{
 cder_handle()
 }
 \description{
-Get the handle for RCurl URL handling in cder.
+Get the handle for curl URL handling in cder.
 }
 \keyword{internal}

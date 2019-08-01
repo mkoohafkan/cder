@@ -1,3 +1,5 @@
+cdec.tz = "Etc/GMT-8"
+
 #' Query CDEC
 #'
 #' Query data from the CDEC web services.
@@ -80,26 +82,21 @@ query_cdec = function(stations, sensors, durations, start.date, end.date) {
 #' @param url The query URL.
 #' @return The parsed JSON string, as a list.
 #'
-#' @importFrom RCurl getURL basicHeaderGatherer basicTextGatherer curlOptions
+#' @importFrom curl curl_fetch_memory parse_headers
 #' @importFrom readr locale read_csv cols col_character col_integer col_datetime col_double
 #' @importFrom stringr str_replace_all
 #' @keywords internal
 basic_query = function(url) {
-  header = basicHeaderGatherer()
-  content = basicTextGatherer()
-  opts = curlOptions(connecttimeout = options()[["cder.timeout"]])
-  getURL(url, httpheader = c(Accept = "application/json"),
-    header = FALSE, headerfunction = header$update,
-    write = content$update, curl = cder_handle(),
-    .opts = opts)
-
-  if (header$value()[['status']] != "200")
-    stop("CDEC query failed. HTTP status ",
-      header$value()[["status"]], ": ",
-      header$value()[["statusMessage"]], "\n",
-      parse(text = content$value()), call. = FALSE)
-
-  read_csv(content$value(), locale = locale(tz = "US/Pacific"),
+  result = curl_fetch_memory(url, handle = cder_handle())
+  if (result$status_code != 200L)
+    stop("CDEC query failed with status ",
+      parse_headers(result$headers)[1], "\n",
+      parse(text = rawToChar(result$content)), "\n",
+      "URL request: ", result$url,
+      call. = FALSE)
+  value = rawToChar(result$content)
+  Encoding(value) = "UTF-8"
+  read_csv(value, locale = locale(tz = cdec.tz),
     na = "---", col_types = cols( 
       STATION_ID = col_character(), DURATION = col_character(),
       SENSOR_NUMBER = col_integer(), SENSOR_TYPE = col_character(),
@@ -108,12 +105,15 @@ basic_query = function(url) {
       UNITS = col_character()))
 }
 
-#' cder RCurl handle
+#' cder curl handle
 #'
-#' Get the handle for RCurl URL handling in cder.
+#' Get the handle for curl URL handling in cder.
 #'
-#' @importFrom RCurl getCurlHandle
+#' @importFrom curl new_handle handle_setopt handle_setheaders
 #' @keywords internal
 cder_handle = function() {
-  getCurlHandle()
+  h = new_handle()
+  handle_setopt(h, connecttimeout = getOption("cder.timeout"))
+  handle_setheaders(h, Accept = "application/json")
+  h
 }

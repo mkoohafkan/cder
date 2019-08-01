@@ -15,13 +15,3 @@
 #' @name cder
 "_PACKAGE"
 
-.onLoad = function(libname, pkgname) {
-  assign("cdec.tz", "Etc/GMT-8", envir = getNamespace(pkgname))
-}
-
-.onAttach = function(libname, pkgname) {
-  if (is.null(options()[["cder.timeout"]])) {
-    options(cder.timeout = 30)
-  }
-}
-
