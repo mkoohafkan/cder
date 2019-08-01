@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-The R package `cder` provides a simple interface to the CDEC JSON 
+The R package `cder` provides a simple interface to the CDEC
 Webservice. Getting CDEC data with `cder` is easy, just pass a 
 station code to `query_cdec`:
 
@@ -29,8 +29,8 @@ query_cdec("NSL")
 ```
 
 The CDEC web service uses some default values for the duration code,
-sensor number, and start/end dates. You can also specify these in 
-the call to `query_cdec`:
+sensor number, and start/end dates. You can also specify these 
+yourself:
 
 ```{r}
 station = "NSL"
@@ -56,4 +56,7 @@ durations = c("event", "hourly")
 query_cdec(stations, sensors, durations)
 ```
 
-That's it!
+That's it! The CDEC Webservice currently does not support querying station
+metadata. To browse station data, use the 
+[Station Search tool](https://cdec.water.ca.gov/dynamicapp/staSearch)
+or [Locator Map](http://cdec.water.ca.gov/cdecstation2/).
