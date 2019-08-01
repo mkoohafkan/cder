@@ -17,7 +17,9 @@ cdec.tz = "Etc/GMT-8"
 #'   "Etc/GMT-8".
 #'
 #' @examples
-#' query_cdec("NSL", 100, "E", Sys.Date() - 5, Sys.Date())
+#' if(interactive()){
+#'   query_cdec("NSL", 100, "E", Sys.Date() - 5, Sys.Date())
+#' }
 #'
 #' @importFrom tibble tibble as_tibble
 #' @importFrom dplyr rename transmute if_else near
