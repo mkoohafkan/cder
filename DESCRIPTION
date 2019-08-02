@@ -1,5 +1,5 @@
 Package: cder
-Title: Interface to the CDEC Web API
+Title: Interface to the California Data Exchange Center
 Version: 0.1-0
 Authors@R: 
     person(given = "Michael",
@@ -7,9 +7,9 @@ Authors@R:
            role = c("aut", "cre"),
            email = "michael.koohafkan@gmail.com")
 Description: Connect to the California Data Exchange Center (CDEC) 
-    Web Service <http://cdec.water.ca.gov/>. CDEC provides a centralized 
+    Web Service <http://cdec.water.ca.gov/>. 'CDEC' provides a centralized 
     database to store, process, and exchange real-time hydrologic information 
-    gathered by various cooperators throughout California. The CDEC Web Service 
+    gathered by various cooperators throughout California. The 'CDEC' Web Service 
     <http://cdec.water.ca.gov/dynamicapp/wsSensorData> provides a data download 
     service for accessing historical records. 
 License: GPL (>= 3)
