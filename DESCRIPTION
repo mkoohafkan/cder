@@ -6,11 +6,12 @@ Authors@R:
            family = "Koohafkan",
            role = c("aut", "cre"),
            email = "michael.koohafkan@gmail.com")
-Description: Connect to the California DataExchange Center 
-    (CDEC) Web API. See the CDEC main page 
-    <http://cdec.water.ca.gov/> and web API landing page
-    <http://cdec.water.ca.gov/dynamicapp/wsSensorData> 
-    for more information.
+Description: Connect to the California Data Exchange Center (CDEC) 
+    Web Service <http://cdec.water.ca.gov/>. CDEC provides a centralized 
+    database to store, process, and exchange real-time hydrologic information 
+    gathered by various cooperators throughout California. The CDEC Web Service 
+    <http://cdec.water.ca.gov/dynamicapp/wsSensorData> provides a data download 
+    service for accessing historical records. 
 License: GPL (>= 3)
 URL: https://github.com/mkoohafkan/cder
 BugReports: https://github.com/mkoohafkan/cder/issues
