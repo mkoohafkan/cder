@@ -1,6 +1,6 @@
-#' R Interface to CDEC
+#' Interface to the California Data Exchange Center
 #'
-#' Provides CDEC data download capabilities from R.
+#' Access the CDEC Web Service from R.
 #'
 #' @section Package options:
 #'

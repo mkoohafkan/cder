@@ -4,9 +4,9 @@
 \name{cder}
 \alias{cder}
 \alias{cder-package}
-\title{R Interface to CDEC}
+\title{Interface to the California Data Exchange Center}
 \description{
-Provides CDEC data download capabilities from R.
+Access the CDEC Web Service from R.
 }
 \section{Package options}{
 
