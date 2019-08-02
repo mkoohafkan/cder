@@ -18,7 +18,7 @@ cdec.tz = "Etc/GMT-8"
 #'
 #' @examples
 #' if(interactive()){
-#'   cder_query("NSL", 100, "E", Sys.Date() - 5, Sys.Date())
+#'   cdec_query("NSL", 100, "E", Sys.Date() - 5, Sys.Date())
 #' }
 #'
 #' @importFrom tibble tibble as_tibble
@@ -28,7 +28,7 @@ cdec.tz = "Etc/GMT-8"
 #' @importFrom glue glue
 #' @importFrom rlang .data
 #' @export
-cder_query = function(stations, sensors, durations, start.date, end.date) {
+cdec_query = function(stations, sensors, durations, start.date, end.date) {
   if (missing(stations)) {
     stop("No stations provided.", call. = FALSE)
   } else {
@@ -62,7 +62,8 @@ cder_query = function(stations, sensors, durations, start.date, end.date) {
   result = basic_query(
     glue("https://cdec.water.ca.gov/dynamicapp/req/CSVDataServlet?",
       "{station.comp}", "{sensor.comp}", "{duration.comp}",
-      "{start.comp}", "{end.comp}")
+      "{start.comp}", "{end.comp}"),
+    station.spec
   )
   rename(result,
     StationID = .data$STATION_ID,
@@ -77,6 +78,67 @@ cder_query = function(stations, sensors, durations, start.date, end.date) {
   )
 }
 
+#' Query CDEC Group
+#'
+#' Query group data from the CDEC web services.
+#'
+#' @param groups A vector of group codes.
+#' @inheritParams cdec_query
+#' @return A dataframe. 
+#'
+#' @details Note that CDEC timestamps are always in Pacific 
+#'   Standard Time, i.e. daylight savings adjustments are not
+#'   reflected. In R, this is equivalent to the timezone 
+#'   "Etc/GMT-8".
+#'
+#' @examples
+#' if(interactive()){
+#'   cdec_query_group("SR1", Sys.Date() - 5, Sys.Date())
+#' }
+#'
+#' @importFrom tibble tibble as_tibble
+#' @importFrom dplyr rename transmute if_else near
+#' @importFrom stringr str_c str_trim str_to_upper str_sub
+#' @importFrom lubridate ymd_hms as_date
+#' @importFrom glue glue
+#' @importFrom rlang .data
+#' @export
+cdec_query_group = function(groups, start.date, end.date) {
+  if (missing(groups)) {
+    stop("No groups provided.", call. = FALSE)
+  } else {
+    group.comp = glue("GroupIds={str_c(str_to_upper(groups), collapse = '%2C')}")
+  }
+  if (missing(start.date)) {
+    start.comp = ""
+  } else {
+    start.date = as_date(start.date)
+    start.comp = glue("&Start={start.date}")
+  }
+  if (missing(end.date)) {
+    end.comp = ""
+  } else {
+    end.date = as_date(end.date)
+    end.comp = glue("&End={end.date}")
+  }
+  # query
+  result = basic_query(
+    glue("http://cdec.water.ca.gov/dynamicapp/req/CSVGroupServlet?",
+      "{group.comp}", "{start.comp}", "{end.comp}"),
+    group.spec
+  )
+  rename(result,
+    StationID = .data$STATION_ID,
+    DateTime = .data$`ACTUAL DATE`,
+    SensorType = .data$SENSOR_TYPE,
+    Value = .data$VALUE,
+    DataFlag = .data$DATA_FLAG,
+    SensorUnits = .data$UNITS,
+    SensorNumber = .data$SENSOR_NUM,
+    Duration = .data$DUR_CODE
+    )
+}
+
 #' Basic Query
 #'
 #' Helper function for CDEC query handling.
@@ -85,10 +147,10 @@ cder_query = function(stations, sensors, durations, start.date, end.date) {
 #' @return The parsed JSON string, as a list.
 #'
 #' @importFrom curl curl_fetch_memory parse_headers
-#' @importFrom readr locale read_csv cols col_character col_integer col_datetime col_double
+#' @importFrom readr locale read_csv
 #' @importFrom stringr str_replace_all
 #' @keywords internal
-basic_query = function(url) {
+basic_query = function(url, col.spec) {
   result = curl_fetch_memory(url, handle = cder_handle())
   if (result$status_code != 200L)
     stop("CDEC query failed with status ",
@@ -99,12 +161,7 @@ basic_query = function(url) {
   value = rawToChar(result$content)
   Encoding(value) = "UTF-8"
   read_csv(value, locale = locale(tz = cdec.tz),
-    na = "---", col_types = cols( 
-      STATION_ID = col_character(), DURATION = col_character(),
-      SENSOR_NUMBER = col_integer(), SENSOR_TYPE = col_character(),
-      `DATE TIME` = col_datetime(), `OBS DATE` = col_datetime(),
-      VALUE = col_double(), DATA_FLAG = col_character(),
-      UNITS = col_character()))
+    na = "---", col_types = col.spec)
 }
 
 #' cder curl handle
@@ -119,3 +176,26 @@ cder_handle = function() {
   handle_setheaders(h, Accept = "application/json")
   h
 }
+
+#' Column specification for station data queries.
+#'
+#' @importFrom readr cols col_character col_integer col_datetime col_double
+#' @keywords internal
+station.spec = cols(
+  STATION_ID = col_character(), DURATION = col_character(),
+  SENSOR_NUMBER = col_integer(), SENSOR_TYPE = col_character(),
+  `DATE TIME` = col_datetime(), `OBS DATE` = col_datetime(),
+  VALUE = col_double(), DATA_FLAG = col_character(),
+  UNITS = col_character())
+
+#' Column specification for group data queries.
+#'
+#' @importFrom readr cols col_character col_integer col_datetime col_double
+#' @keywords internal
+group.spec = cols(
+  STATION_ID = col_character(), DUR_CODE = col_character(),
+  SENSOR_NUM = col_integer(), SENSOR_TYPE = col_character(),
+  `ACTUAL_DATE` = col_datetime(), 
+  VALUE = col_double(), DATA_FLAG = col_character(),
+  UNITS = col_character()
+)

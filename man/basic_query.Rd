@@ -4,7 +4,7 @@
 \alias{basic_query}
 \title{Basic Query}
 \usage{
-basic_query(url)
+basic_query(url, col.spec)
 }
 \arguments{
 \item{url}{The query URL.}
