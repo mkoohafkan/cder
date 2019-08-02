@@ -18,7 +18,7 @@ cdec.tz = "Etc/GMT-8"
 #'
 #' @examples
 #' if(interactive()){
-#'   query_cdec("NSL", 100, "E", Sys.Date() - 5, Sys.Date())
+#'   cder_query("NSL", 100, "E", Sys.Date() - 5, Sys.Date())
 #' }
 #'
 #' @importFrom tibble tibble as_tibble
@@ -28,7 +28,7 @@ cdec.tz = "Etc/GMT-8"
 #' @importFrom glue glue
 #' @importFrom rlang .data
 #' @export
-query_cdec = function(stations, sensors, durations, start.date, end.date) {
+cder_query = function(stations, sensors, durations, start.date, end.date) {
   if (missing(stations)) {
     stop("No stations provided.", call. = FALSE)
   } else {
