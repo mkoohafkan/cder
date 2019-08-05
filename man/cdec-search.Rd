@@ -3,16 +3,19 @@
 \name{cdec-search}
 \alias{cdec-search}
 \alias{cdec_search_groups}
-\alias{cdec_search__stations}
+\alias{cdec_search_stations}
 \alias{cdec_map}
 \title{CDEC Search Pages
 Open the CDEC station/group search page or map interface.}
 \usage{
-cdec_search_groups()
+cdec_search_groups(...)
 
-cdec_search__stations()
+cdec_search_stations(...)
 
-cdec_map()
+cdec_map(...)
+}
+\arguments{
+\item{...}{Additional arguments to pass to \code{browseURL}.}
 }
 \description{
 CDEC Search Pages
@@ -22,7 +25,7 @@ Open the CDEC station/group search page or map interface.
 \itemize{
 \item \code{cdec_search_groups}: CDEC Group search page.
 
-\item \code{cdec_search__stations}: CDEC Station search page.
+\item \code{cdec_search_stations}: CDEC Station search page.
 
 \item \code{cdec_map}: CDEC Map locator page.
 }}

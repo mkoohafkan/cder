@@ -4,10 +4,12 @@
 \alias{cdec_meta}
 \title{CDEC Station Metadata}
 \usage{
-cdec_meta(station)
+cdec_meta(station, ...)
 }
 \arguments{
 \item{station}{The three-letter station code.}
+
+\item{...}{Additional arguments to pass to \code{browseURL}.}
 }
 \description{
 Open the Metadata page for a station.
