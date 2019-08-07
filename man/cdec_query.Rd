@@ -4,7 +4,7 @@
 \alias{cdec_query}
 \title{Query CDEC}
 \usage{
-cdec_query(stations, sensors, durations, start.date, end.date)
+cdec_query(stations, sensors, durations, start.date, end.date, ...)
 }
 \arguments{
 \item{stations}{A vector of station codes.}
@@ -16,6 +16,8 @@ cdec_query(stations, sensors, durations, start.date, end.date)
 \item{start.date}{The start date of the query.}
 
 \item{end.date}{The end date of the query.}
+
+\item{...}{Not used.}
 }
 \value{
 A dataframe.

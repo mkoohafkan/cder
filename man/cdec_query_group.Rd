@@ -4,7 +4,7 @@
 \alias{cdec_query_group}
 \title{Query CDEC Group}
 \usage{
-cdec_query_group(groups, start.date, end.date)
+cdec_query_group(groups, start.date, end.date, ...)
 }
 \arguments{
 \item{groups}{A vector of group codes.}
@@ -12,6 +12,8 @@ cdec_query_group(groups, start.date, end.date)
 \item{start.date}{The start date of the query.}
 
 \item{end.date}{The end date of the query.}
+
+\item{...}{Not used.}
 }
 \value{
 A dataframe.

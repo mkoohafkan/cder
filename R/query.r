@@ -9,6 +9,7 @@ cdec.tz = "Etc/GMT-8"
 #' @param durations A vector of durations.
 #' @param start.date The start date of the query.
 #' @param end.date The end date of the query.
+#' @param ... Not used.
 #' @return A dataframe. 
 #'
 #' @details Note that CDEC timestamps are always in Pacific 
@@ -28,7 +29,7 @@ cdec.tz = "Etc/GMT-8"
 #' @importFrom glue glue
 #' @importFrom rlang .data
 #' @export
-cdec_query = function(stations, sensors, durations, start.date, end.date) {
+cdec_query = function(stations, sensors, durations, start.date, end.date, ...) {
   if (missing(stations)) {
     stop("No stations provided.", call. = FALSE)
   } else {
@@ -103,7 +104,7 @@ cdec_query = function(stations, sensors, durations, start.date, end.date) {
 #' @importFrom glue glue
 #' @importFrom rlang .data
 #' @export
-cdec_query_group = function(groups, start.date, end.date) {
+cdec_query_group = function(groups, start.date, end.date, ...) {
   if (missing(groups)) {
     stop("No groups provided.", call. = FALSE)
   } else {
