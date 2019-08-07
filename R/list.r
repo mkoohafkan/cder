@@ -7,7 +7,7 @@
 #' @importFrom glue glue
 #' @export
 cdec_meta = function(station, ...) {
-  browseURL(glue("http://cdec.water.ca.gov/dynamicapp/staMeta?station_id={station}"), ...)
+  browseURL(url = glue("http://cdec.water.ca.gov/dynamicapp/staMeta?station_id={station}"), ...)
 }
 
 
@@ -21,17 +21,17 @@ NULL
 #' @importFrom utils browseURL
 #' @export
 cdec_search_groups = function(...) {
-  browseURL("http://cdec.water.ca.gov/dynamicapp/queryGroup?s=&get_list=y", ...)
+  browseURL(url = "http://cdec.water.ca.gov/dynamicapp/queryGroup?s=&get_list=y", ...)
 }
 
 #' @describeIn cdec-search CDEC Station search page.
 #' @export
 cdec_search_stations = function(...) {
-  browseURL("http://cdec.water.ca.gov/dynamicapp/staSearch", ...)
+  browseURL(url = "http://cdec.water.ca.gov/dynamicapp/staSearch", ...)
 }
 
 #' @describeIn cdec-search CDEC Map locator page.
 #' @export
 cdec_map = function(...) {
-  browseURL("http://cdec.water.ca.gov/cdecstation2/", ...)
+  browseURL(url = "http://cdec.water.ca.gov/cdecstation2/", ...)
 }
