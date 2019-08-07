@@ -2,16 +2,15 @@
 
 This release includes the following changes:
 
-* The CDEC Web Service output formatting underwent changes over
-  the period of August 2-7. Functions in this package were updated
-  to accomodate this new format.
+* The CDEC Web Services underwent changes over the period of 
+  August 2-7 which modified the data output format. Functions in 
+  this package were updated to accomodate this new format.
 * Some functions were renamed and arguments were added to support
   drop-in replacement of cder for the now-removed package 
   CDECRetrieve. Old function names have been soft-deprecated.
 * New functions were added to support the exploration of metadata
   on CDEC. These are largely just wrappers around browseURL(), 
-  since the CDEC web services do not currently support station
-  metadata searches.
+  since the CDEC web services do not currently support metadata searches.
 
 
 ## Test environments
