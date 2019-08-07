@@ -15,7 +15,7 @@ This release includes the following changes:
 
 ## Test environments
 
-* Local Windows 10 install, R 3.6.0
+* Local Windows 10 install, R 3.6.1
 * Ubuntu 14.04 (on travis-ci), R-oldrel, R-release, R-devel
 
 Because the CDEC Web API requires an internet connection, examples 
