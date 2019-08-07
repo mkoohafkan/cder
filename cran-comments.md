@@ -1,11 +1,17 @@
-# cder 0.1-0.
+# cder 0.2-0.
 
-Resubmission to address CRAN comments:
+This release includes the following changes:
 
-*  Wrote package names, software names and API names in single quotes (e.g. 'CDEC') in Title and Description.
-* Corrected typo in description: California DataExchange Center --> California Data Exchange Center
-* Added more details about the functionality of this API in the Description text.
-
+* The CDEC Web Service output formatting underwent changes over
+  the period of August 2-7. Functions in this package were updated
+  to accomodate this new format.
+* Some functions were renamed and arguments were added to support
+  drop-in replacement of cder for the now-removed package 
+  CDECRetrieve. Old function names have been soft-deprecated.
+* New functions were added to support the exploration of metadata
+  on CDEC. These are largely just wrappers around browseURL(), 
+  since the CDEC web services do not currently support station
+  metadata searches.
 
 
 ## Test environments
