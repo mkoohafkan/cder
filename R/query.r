@@ -129,13 +129,14 @@ cdec_query_group = function(groups, start.date, end.date) {
   )
   rename(result,
     StationID = .data$STATION_ID,
-    DateTime = .data$`ACTUAL DATE`,
+    DateTime = .data$ACTUAL_DATE,
     SensorType = .data$SENSOR_TYPE,
     Value = .data$VALUE,
     DataFlag = .data$DATA_FLAG,
     SensorUnits = .data$UNITS,
     SensorNumber = .data$SENSOR_NUM,
-    Duration = .data$DUR_CODE
+    Duration = .data$DUR_CODE,
+    ObsDate = .data$OBS_DATE
     )
 }
 
@@ -195,7 +196,7 @@ station.spec = cols(
 group.spec = cols(
   STATION_ID = col_character(), DUR_CODE = col_character(),
   SENSOR_NUM = col_integer(), SENSOR_TYPE = col_character(),
-  `ACTUAL_DATE` = col_datetime(), 
+  ACTUAL_DATE = col_datetime(), OBS_DATE = col_datetime(),
   VALUE = col_double(), DATA_FLAG = col_character(),
   UNITS = col_character()
 )
