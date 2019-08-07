@@ -56,7 +56,11 @@ durations = c("event", "hourly")
 cder_query(stations, sensors, durations)
 ```
 
-That's it! The CDEC Webservice currently does not support querying station
-metadata. To browse station data, use the 
+That's it! The CDEC Webservice currently does not support querying 
+station metadata. To browse station data, use the 
 [Station Search tool](https://cdec.water.ca.gov/dynamicapp/staSearch)
-or [Locator Map](http://cdec.water.ca.gov/cdecstation2/).
+or [Locator Map](http://cdec.water.ca.gov/cdecstation2/). These
+URLs can also be accessed by calling `cdec_search_stations()` and 
+`cdec_map()`, respectively. See `help("cdec-search")` for more 
+information.To access the metadata page for a particular station, use
+`cdec_meta()`.

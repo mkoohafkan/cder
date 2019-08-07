@@ -1,7 +1,7 @@
 ---
 title: "Quick Start with CDER"
 author: "Michael Koohafkan"
-date: "2019-08-02"
+date: "2019-08-07"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Quick Start}
@@ -21,19 +21,22 @@ station code to `cder_query`:
 library(cder)
 # get data for CDEC station NSL 
 cder_query("NSL")
+#> Warning: 'cder_query' is deprecated.
+#> Use 'cdec_query' instead.
+#> See help("Deprecated")
 #> # A tibble: 578 x 9
 #>    StationID Duration SensorNumber SensorType DateTime           
 #>    <chr>     <chr>           <int> <chr>      <dttm>             
-#>  1 NSL       E                   1 RIV STG    2019-08-01 19:15:00
-#>  2 NSL       E                   1 RIV STG    2019-08-01 19:30:00
-#>  3 NSL       E                   1 RIV STG    2019-08-01 19:45:00
-#>  4 NSL       E                   1 RIV STG    2019-08-01 20:00:00
-#>  5 NSL       E                   1 RIV STG    2019-08-01 20:15:00
-#>  6 NSL       E                   1 RIV STG    2019-08-01 20:30:00
-#>  7 NSL       E                   1 RIV STG    2019-08-01 20:45:00
-#>  8 NSL       E                   1 RIV STG    2019-08-01 21:00:00
-#>  9 NSL       E                   1 RIV STG    2019-08-01 21:15:00
-#> 10 NSL       E                   1 RIV STG    2019-08-01 21:30:00
+#>  1 NSL       E                   1 RIV STG    2019-08-06 21:30:00
+#>  2 NSL       E                   1 RIV STG    2019-08-06 21:45:00
+#>  3 NSL       E                   1 RIV STG    2019-08-06 22:00:00
+#>  4 NSL       E                   1 RIV STG    2019-08-06 22:15:00
+#>  5 NSL       E                   1 RIV STG    2019-08-06 22:30:00
+#>  6 NSL       E                   1 RIV STG    2019-08-06 22:45:00
+#>  7 NSL       E                   1 RIV STG    2019-08-06 23:00:00
+#>  8 NSL       E                   1 RIV STG    2019-08-06 23:15:00
+#>  9 NSL       E                   1 RIV STG    2019-08-06 23:30:00
+#> 10 NSL       E                   1 RIV STG    2019-08-06 23:45:00
 #> # ... with 568 more rows, and 4 more variables: ObsDate <dttm>,
 #> #   Value <dbl>, DataFlag <chr>, SensorUnits <chr>
 ```
@@ -51,19 +54,22 @@ start.date = Sys.Date() - 14
 end.date = Sys.Date()
 
 cder_query(station, sensor, duration, start.date, end.date)
+#> Warning: 'cder_query' is deprecated.
+#> Use 'cdec_query' instead.
+#> See help("Deprecated")
 #> # A tibble: 1,345 x 9
 #>    StationID Duration SensorNumber SensorType DateTime           
 #>    <chr>     <chr>           <int> <chr>      <dttm>             
-#>  1 NSL       E                 100 EL COND    2019-07-19 00:00:00
-#>  2 NSL       E                 100 EL COND    2019-07-19 00:15:00
-#>  3 NSL       E                 100 EL COND    2019-07-19 00:30:00
-#>  4 NSL       E                 100 EL COND    2019-07-19 00:45:00
-#>  5 NSL       E                 100 EL COND    2019-07-19 01:00:00
-#>  6 NSL       E                 100 EL COND    2019-07-19 01:15:00
-#>  7 NSL       E                 100 EL COND    2019-07-19 01:30:00
-#>  8 NSL       E                 100 EL COND    2019-07-19 01:45:00
-#>  9 NSL       E                 100 EL COND    2019-07-19 02:00:00
-#> 10 NSL       E                 100 EL COND    2019-07-19 02:15:00
+#>  1 NSL       E                 100 EL COND    2019-07-24 00:00:00
+#>  2 NSL       E                 100 EL COND    2019-07-24 00:15:00
+#>  3 NSL       E                 100 EL COND    2019-07-24 00:30:00
+#>  4 NSL       E                 100 EL COND    2019-07-24 00:45:00
+#>  5 NSL       E                 100 EL COND    2019-07-24 01:00:00
+#>  6 NSL       E                 100 EL COND    2019-07-24 01:15:00
+#>  7 NSL       E                 100 EL COND    2019-07-24 01:30:00
+#>  8 NSL       E                 100 EL COND    2019-07-24 01:45:00
+#>  9 NSL       E                 100 EL COND    2019-07-24 02:00:00
+#> 10 NSL       E                 100 EL COND    2019-07-24 02:15:00
 #> # ... with 1,335 more rows, and 4 more variables: ObsDate <dttm>,
 #> #   Value <dbl>, DataFlag <chr>, SensorUnits <chr>
 ```
@@ -81,24 +87,31 @@ sensors = c(100, 1)
 durations = c("event", "hourly")
 
 cder_query(stations, sensors, durations)
+#> Warning: 'cder_query' is deprecated.
+#> Use 'cdec_query' instead.
+#> See help("Deprecated")
 #> # A tibble: 240 x 9
 #>    StationID Duration SensorNumber SensorType DateTime           
 #>    <chr>     <chr>           <int> <chr>      <dttm>             
-#>  1 HUN       E                   1 RIV STG    2019-08-01 19:15:00
-#>  2 HUN       E                   1 RIV STG    2019-08-01 19:30:00
-#>  3 HUN       E                   1 RIV STG    2019-08-01 19:45:00
-#>  4 HUN       E                   1 RIV STG    2019-08-01 20:00:00
-#>  5 HUN       E                   1 RIV STG    2019-08-01 20:15:00
-#>  6 HUN       E                   1 RIV STG    2019-08-01 20:30:00
-#>  7 HUN       E                   1 RIV STG    2019-08-01 20:45:00
-#>  8 HUN       E                   1 RIV STG    2019-08-01 21:00:00
-#>  9 HUN       E                   1 RIV STG    2019-08-01 21:15:00
-#> 10 HUN       E                   1 RIV STG    2019-08-01 21:30:00
+#>  1 HUN       E                   1 RIV STG    2019-08-06 21:30:00
+#>  2 HUN       E                   1 RIV STG    2019-08-06 21:45:00
+#>  3 HUN       E                   1 RIV STG    2019-08-06 22:00:00
+#>  4 HUN       E                   1 RIV STG    2019-08-06 22:15:00
+#>  5 HUN       E                   1 RIV STG    2019-08-06 22:30:00
+#>  6 HUN       E                   1 RIV STG    2019-08-06 22:45:00
+#>  7 HUN       E                   1 RIV STG    2019-08-06 23:00:00
+#>  8 HUN       E                   1 RIV STG    2019-08-06 23:15:00
+#>  9 HUN       E                   1 RIV STG    2019-08-06 23:30:00
+#> 10 HUN       E                   1 RIV STG    2019-08-06 23:45:00
 #> # ... with 230 more rows, and 4 more variables: ObsDate <dttm>,
 #> #   Value <dbl>, DataFlag <chr>, SensorUnits <chr>
 ```
 
-That's it! The CDEC Webservice currently does not support querying station
-metadata. To browse station data, use the 
+That's it! The CDEC Webservice currently does not support querying 
+station metadata. To browse station data, use the 
 [Station Search tool](https://cdec.water.ca.gov/dynamicapp/staSearch)
-or [Locator Map](http://cdec.water.ca.gov/cdecstation2/).
+or [Locator Map](http://cdec.water.ca.gov/cdecstation2/). These
+URLs can also be accessed by calling `cdec_search_stations()` and 
+`cdec_map()`, respectively. See `help("cdec-search")` for more 
+information.To access the metadata page for a particular station, use
+`cdec_meta()`.
