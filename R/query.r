@@ -10,11 +10,11 @@ cdec.tz = "Etc/GMT-8"
 #' @param start.date The start date of the query.
 #' @param end.date The end date of the query.
 #' @param ... Not used.
-#' @return A dataframe. 
+#' @return A dataframe.
 #'
-#' @details Note that CDEC timestamps are always in Pacific 
+#' @details Note that CDEC timestamps are always in Pacific
 #'   Standard Time, i.e. daylight savings adjustments are not
-#'   reflected. In R, this is equivalent to the timezone 
+#'   reflected. In R, this is equivalent to the timezone
 #'   "Etc/GMT-8".
 #'
 #' @examples
@@ -85,11 +85,11 @@ cdec_query = function(stations, sensors, durations, start.date, end.date, ...) {
 #'
 #' @param groups A vector of group codes.
 #' @inheritParams cdec_query
-#' @return A dataframe. 
+#' @return A dataframe.
 #'
-#' @details Note that CDEC timestamps are always in Pacific 
+#' @details Note that CDEC timestamps are always in Pacific
 #'   Standard Time, i.e. daylight savings adjustments are not
-#'   reflected. In R, this is equivalent to the timezone 
+#'   reflected. In R, this is equivalent to the timezone
 #'   "Etc/GMT-8".
 #'
 #' @examples
@@ -146,7 +146,7 @@ cdec_query_group = function(groups, start.date, end.date, ...) {
 #' Helper function for CDEC query handling.
 #'
 #' @param url The query URL.
-#' @return The parsed JSON string, as a list.
+#' @return A dataframe.
 #'
 #' @importFrom curl curl_fetch_memory parse_headers
 #' @importFrom readr locale read_csv
