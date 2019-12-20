@@ -29,7 +29,7 @@ Query data from the CDEC web services.
 Note that CDEC timestamps are always in Pacific
 Standard Time, i.e. daylight savings adjustments are not
 reflected. In R, this is equivalent to the timezone
-"Etc/GMT-8".
+"Etc/GMT+8".
 }
 \examples{
 if(interactive()){

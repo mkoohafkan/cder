@@ -1,17 +1,9 @@
-# cder 0.2-0.
+# cder 0.2-1.
 
 This release includes the following changes:
 
-* The CDEC Web Services underwent changes over the period of 
-  August 2-7 which modified the data output format. Functions in 
-  this package were updated to accomodate this new format.
-* Some functions were renamed and arguments were added to support
-  drop-in replacement of cder for the now-removed package 
-  CDECRetrieve. Old function names have been soft-deprecated.
-* New functions were added to support the exploration of metadata
-  on CDEC. These are largely just wrappers around browseURL(), 
-  since the CDEC web services do not currently support metadata searches.
-
+* The CDEC timezone was incorrectly specified. The `cder` locale has been modified 
+  to use "ETC/GMT+8".
 
 ## Test environments
 

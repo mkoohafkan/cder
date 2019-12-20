@@ -10,7 +10,7 @@ basic_query(url, col.spec)
 \item{url}{The query URL.}
 }
 \value{
-The parsed JSON string, as a list.
+A dataframe.
 }
 \description{
 Helper function for CDEC query handling.
