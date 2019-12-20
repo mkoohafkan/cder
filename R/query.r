@@ -1,4 +1,4 @@
-cdec.tz = "Etc/GMT-8"
+cdec.tz = "Etc/GMT+8"
 
 #' Query CDEC
 #'
@@ -15,7 +15,7 @@ cdec.tz = "Etc/GMT-8"
 #' @details Note that CDEC timestamps are always in Pacific
 #'   Standard Time, i.e. daylight savings adjustments are not
 #'   reflected. In R, this is equivalent to the timezone
-#'   "Etc/GMT-8".
+#'   "Etc/GMT+8".
 #'
 #' @examples
 #' if(interactive()){
@@ -90,7 +90,7 @@ cdec_query = function(stations, sensors, durations, start.date, end.date, ...) {
 #' @details Note that CDEC timestamps are always in Pacific
 #'   Standard Time, i.e. daylight savings adjustments are not
 #'   reflected. In R, this is equivalent to the timezone
-#'   "Etc/GMT-8".
+#'   "Etc/GMT+8".
 #'
 #' @examples
 #' if(interactive()){
