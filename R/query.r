@@ -1,4 +1,4 @@
-cdec.tz = "Etc/GMT+8"
+cdec.tz = "US/Pacific"
 
 #' Query CDEC
 #'

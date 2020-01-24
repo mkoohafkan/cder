@@ -1,6 +1,6 @@
 Package: cder
 Title: Interface to the California Data Exchange Center
-Version: 0.2-1
+Version: 0.2-2
 Authors@R: 
     person(given = "Michael",
            family = "Koohafkan",

@@ -1,9 +1,10 @@
-# cder 0.2-1.
+# cder 0.2-2.
 
 This release includes the following changes:
 
-* The CDEC timezone was incorrectly specified. The `cder` locale has been modified 
-  to use "ETC/GMT+8".
+* CDEC actually accounts for daylight savings time as documented in 
+https://info.water.ca.gov/misc/sql_dates.html. The correct timezone 
+timezone "US/Pacific" is now used.
 
 ## Test environments
 
