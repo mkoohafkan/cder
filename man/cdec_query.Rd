@@ -26,10 +26,9 @@ A dataframe.
 Query data from the CDEC web services.
 }
 \details{
-Note that CDEC timestamps are always in Pacific
-Standard Time, i.e. daylight savings adjustments are not
-reflected. In R, this is equivalent to the timezone
-"Etc/GMT+8".
+Note that CDEC timestamps are in Pacific Time and
+Daylight Savings adjustments are reflected. In R, this is
+equivalent to the timezone "US/Pacific".
 }
 \examples{
 if(interactive()){
