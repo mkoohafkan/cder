@@ -21,21 +21,20 @@ station code to `cdec_query()`:
 # get data for CDEC station NSL
 cdec_query("NSL")
 #> # A tibble: 578 x 9
-#>    StationID Duration SensorNumber SensorType
-#>    <chr>     <chr>           <int> <chr>     
-#>  1 NSL       E                   1 RIV STG   
-#>  2 NSL       E                   1 RIV STG   
-#>  3 NSL       E                   1 RIV STG   
-#>  4 NSL       E                   1 RIV STG   
-#>  5 NSL       E                   1 RIV STG   
-#>  6 NSL       E                   1 RIV STG   
-#>  7 NSL       E                   1 RIV STG   
-#>  8 NSL       E                   1 RIV STG   
-#>  9 NSL       E                   1 RIV STG   
-#> 10 NSL       E                   1 RIV STG   
-#> # ... with 568 more rows, and 5 more variables:
-#> #   DateTime <dttm>, ObsDate <dttm>, Value <dbl>,
-#> #   DataFlag <chr>, SensorUnits <chr>
+#>    StationID Duration SensorNumber SensorType DateTime           
+#>    <chr>     <chr>           <int> <chr>      <dttm>             
+#>  1 NSL       E                   1 RIV STG    2020-06-11 19:30:00
+#>  2 NSL       E                   1 RIV STG    2020-06-11 19:45:00
+#>  3 NSL       E                   1 RIV STG    2020-06-11 20:00:00
+#>  4 NSL       E                   1 RIV STG    2020-06-11 20:15:00
+#>  5 NSL       E                   1 RIV STG    2020-06-11 20:30:00
+#>  6 NSL       E                   1 RIV STG    2020-06-11 20:45:00
+#>  7 NSL       E                   1 RIV STG    2020-06-11 21:00:00
+#>  8 NSL       E                   1 RIV STG    2020-06-11 21:15:00
+#>  9 NSL       E                   1 RIV STG    2020-06-11 21:30:00
+#> 10 NSL       E                   1 RIV STG    2020-06-11 21:45:00
+#> # ... with 568 more rows, and 4 more variables: ObsDate <dttm>,
+#> #   Value <dbl>, DataFlag <chr>, SensorUnits <chr>
 ```
 
 The CDEC web service uses some default values for the duration code,
@@ -53,21 +52,20 @@ end.date = Sys.Date()
 
 cdec_query(station, sensor, duration, start.date, end.date)
 #> # A tibble: 1,345 x 9
-#>    StationID Duration SensorNumber SensorType
-#>    <chr>     <chr>           <int> <chr>     
-#>  1 NSL       E                 100 EL COND   
-#>  2 NSL       E                 100 EL COND   
-#>  3 NSL       E                 100 EL COND   
-#>  4 NSL       E                 100 EL COND   
-#>  5 NSL       E                 100 EL COND   
-#>  6 NSL       E                 100 EL COND   
-#>  7 NSL       E                 100 EL COND   
-#>  8 NSL       E                 100 EL COND   
-#>  9 NSL       E                 100 EL COND   
-#> 10 NSL       E                 100 EL COND   
-#> # ... with 1,335 more rows, and 5 more variables:
-#> #   DateTime <dttm>, ObsDate <dttm>, Value <dbl>,
-#> #   DataFlag <chr>, SensorUnits <chr>
+#>    StationID Duration SensorNumber SensorType DateTime           
+#>    <chr>     <chr>           <int> <chr>      <dttm>             
+#>  1 NSL       E                 100 EL COND    2020-05-29 00:00:00
+#>  2 NSL       E                 100 EL COND    2020-05-29 00:15:00
+#>  3 NSL       E                 100 EL COND    2020-05-29 00:30:00
+#>  4 NSL       E                 100 EL COND    2020-05-29 00:45:00
+#>  5 NSL       E                 100 EL COND    2020-05-29 01:00:00
+#>  6 NSL       E                 100 EL COND    2020-05-29 01:15:00
+#>  7 NSL       E                 100 EL COND    2020-05-29 01:30:00
+#>  8 NSL       E                 100 EL COND    2020-05-29 01:45:00
+#>  9 NSL       E                 100 EL COND    2020-05-29 02:00:00
+#> 10 NSL       E                 100 EL COND    2020-05-29 02:15:00
+#> # ... with 1,335 more rows, and 4 more variables: ObsDate <dttm>,
+#> #   Value <dbl>, DataFlag <chr>, SensorUnits <chr>
 ```
 
 The web service supports multiple stations, sensors, and even 
@@ -84,21 +82,20 @@ durations = c("event", "hourly")
 
 cdec_query(stations, sensors, durations)
 #> # A tibble: 240 x 9
-#>    StationID Duration SensorNumber SensorType
-#>    <chr>     <chr>           <int> <chr>     
-#>  1 HUN       E                   1 RIV STG   
-#>  2 HUN       E                   1 RIV STG   
-#>  3 HUN       E                   1 RIV STG   
-#>  4 HUN       E                   1 RIV STG   
-#>  5 HUN       E                   1 RIV STG   
-#>  6 HUN       E                   1 RIV STG   
-#>  7 HUN       E                   1 RIV STG   
-#>  8 HUN       E                   1 RIV STG   
-#>  9 HUN       E                   1 RIV STG   
-#> 10 HUN       E                   1 RIV STG   
-#> # ... with 230 more rows, and 5 more variables:
-#> #   DateTime <dttm>, ObsDate <dttm>, Value <dbl>,
-#> #   DataFlag <chr>, SensorUnits <chr>
+#>    StationID Duration SensorNumber SensorType DateTime           
+#>    <chr>     <chr>           <int> <chr>      <dttm>             
+#>  1 HUN       E                   1 RIV STG    2020-06-11 19:30:00
+#>  2 HUN       E                   1 RIV STG    2020-06-11 19:45:00
+#>  3 HUN       E                   1 RIV STG    2020-06-11 20:00:00
+#>  4 HUN       E                   1 RIV STG    2020-06-11 20:15:00
+#>  5 HUN       E                   1 RIV STG    2020-06-11 20:30:00
+#>  6 HUN       E                   1 RIV STG    2020-06-11 20:45:00
+#>  7 HUN       E                   1 RIV STG    2020-06-11 21:00:00
+#>  8 HUN       E                   1 RIV STG    2020-06-11 21:15:00
+#>  9 HUN       E                   1 RIV STG    2020-06-11 21:30:00
+#> 10 HUN       E                   1 RIV STG    2020-06-11 21:45:00
+#> # ... with 230 more rows, and 4 more variables: ObsDate <dttm>,
+#> #   Value <dbl>, DataFlag <chr>, SensorUnits <chr>
 ```
 
 That's it! The CDEC Webservice currently does not support querying 

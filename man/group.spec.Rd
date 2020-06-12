@@ -4,7 +4,9 @@
 \name{group.spec}
 \alias{group.spec}
 \title{Column specification for group data queries.}
-\format{An object of class \code{col_spec} of length 2.}
+\format{
+An object of class \code{col_spec} of length 2.
+}
 \usage{
 group.spec
 }

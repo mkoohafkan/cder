@@ -16,7 +16,7 @@ cdec_query_group(groups, start.date, end.date, ...)
 \item{...}{Not used.}
 }
 \value{
-A dataframe.
+A tibble.
 }
 \description{
 Query group data from the CDEC web services.

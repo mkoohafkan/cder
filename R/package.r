@@ -14,4 +14,3 @@
 #' @docType package
 #' @name cder
 "_PACKAGE"
-
