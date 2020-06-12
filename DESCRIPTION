@@ -1,5 +1,5 @@
 Package: cder
-Title: Interface to the California Data Exchange Center
+Title: Interface to the California Data Exchange Center (CDEC)
 Version: 0.2-2
 Authors@R: 
     person(given = "Michael",
@@ -33,5 +33,5 @@ Suggests:
     rmarkdown (>= 2.0),
     testthat (>= 2.3)
 VignetteBuilder: knitr
-RoxygenNote: 7.0.2
+RoxygenNote: 7.1.0
 Roxygen: list(markdown = TRUE)
