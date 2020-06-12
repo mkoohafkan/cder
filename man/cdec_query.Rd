@@ -11,7 +11,8 @@ cdec_query(stations, sensors, durations, start.date, end.date, ...)
 
 \item{sensors}{A vector of sensor numbers.}
 
-\item{durations}{A vector of durations.}
+\item{durations}{A vector of durations. Possible duration codes are
+\code{"E"} (event), \code{"H"} (hourly), \code{"D"} (daily), and \code{"M"} (monthly).}
 
 \item{start.date}{The start date of the query.}
 
@@ -20,7 +21,7 @@ cdec_query(stations, sensors, durations, start.date, end.date, ...)
 \item{...}{Not used.}
 }
 \value{
-A dataframe.
+A tibble.
 }
 \description{
 Query data from the CDEC web services.

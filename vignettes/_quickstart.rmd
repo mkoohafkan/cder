@@ -23,18 +23,18 @@ Webservice. Getting CDEC data with `cder` is easy, just pass a
 station code to `cdec_query()`:
 
 ```{r}
-library(cder)
-# get data for CDEC station NSL 
+# get data for CDEC station NSL
 cdec_query("NSL")
 ```
 
 The CDEC web service uses some default values for the duration code,
-sensor number, and start/end dates. You can also specify these 
-yourself:
+sensor number, and start/end dates. However, these default values vary
+from station to station, and sometimes a station will return no data by
+default. It's generally a good idea to specify these yourself:
 
 ```{r}
 station = "NSL"
-duration = "event"
+duration = "event" # or "E"
 sensor = 100 # electrical conductivity
 start.date = Sys.Date() - 14
 end.date = Sys.Date()
