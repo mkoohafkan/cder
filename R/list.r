@@ -10,6 +10,15 @@ cdec_meta = function(station, ...) {
   browseURL(url = glue("http://cdec.water.ca.gov/dynamicapp/staMeta?station_id={station}"), ...)
 }
 
+#' CDEC Sensor Information
+#'
+#' Open the Sensor listing page.
+#' @param ... Additional arguments to pass to `browseURL`.
+#'
+#' @export
+cdec_sensors = function(...) {
+  browseURL(url = "https://cdec.water.ca.gov/reportapp/javareports?name=SensList", ...)
+}
 
 #' CDEC Search Pages
 #' Open the CDEC station/group search page or map interface.
