@@ -20,6 +20,16 @@ cdec_sensors = function(...) {
   browseURL(url = "https://cdec.water.ca.gov/reportapp/javareports?name=SensList", ...)
 }
 
+#' CDEC Data Flag Information
+#'
+#' Open the data flag listing page.
+#' @param ... Additional arguments to pass to `browseURL`.
+#'
+#' @export
+cdec_data_flags = function(...) {
+  browseURL(url = "https://cdec.water.ca.gov/reportapp/javareports?name=FlagList", ...)
+}
+
 #' CDEC Search Pages
 #' Open the CDEC station/group search page or map interface.
 #' @name cdec-search
