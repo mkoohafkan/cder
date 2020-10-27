@@ -1,7 +1,10 @@
 # cder: Interface to CDEC <a href='https://github.com/mkoohafkan/cder'><img src='man/figures/logo.png' align="right" height="139" /></a>
 
-[![Build Status](https://travis-ci.org/mkoohafkan/cder.svg?branch=master)](https://travis-ci.org/mkoohafkan/cder)
+
+<!-- badges: start -->
+[![R build status](https://github.com/mkoohafkan/cder/workflows/R-CMD-check/badge.svg)](https://github.com/mkoohafkan/cder/actions)
 ![CRAN Release](https://www.r-pkg.org/badges/version-last-release/cder)
+<!-- badges: end -->
 
 This package provides an R interface to the 
 [California Data Exchange Center](https://cdec.water.ca.gov/)
