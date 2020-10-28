@@ -16,3 +16,6 @@ README.md
 vignettes/_quickstart.rmd
 ^_build_vignette.r$
 ^\.github$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
