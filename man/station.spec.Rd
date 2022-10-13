@@ -5,7 +5,7 @@
 \alias{station.spec}
 \title{Column specification for station data queries.}
 \format{
-An object of class \code{col_spec} of length 2.
+An object of class \code{col_spec} of length 3.
 }
 \usage{
 station.spec

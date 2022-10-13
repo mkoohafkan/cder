@@ -23,10 +23,10 @@ Open the CDEC station/group search page or map interface.
 }
 \section{Functions}{
 \itemize{
-\item \code{cdec_search_groups}: CDEC Group search page.
+\item \code{cdec_search_groups()}: CDEC Group search page.
 
-\item \code{cdec_search_stations}: CDEC Station search page.
+\item \code{cdec_search_stations()}: CDEC Station search page.
 
-\item \code{cdec_map}: CDEC Map locator page.
+\item \code{cdec_map()}: CDEC Map locator page.
+
 }}
-
