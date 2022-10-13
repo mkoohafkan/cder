@@ -1,6 +1,12 @@
 cdec.tz = "US/Pacific"
 valid.durations = c("E", "H", "D", "M")
 
+
+#' @importFrom readr problems
+#' @export
+readr::problems
+
+
 #' Query CDEC
 #'
 #' Query data from the CDEC web services.
@@ -162,8 +168,15 @@ basic_query = function(url, col.spec) {
       call. = FALSE)
   value = rawToChar(result$content)
   Encoding(value) = "UTF-8"
-  read_csv(value, locale = locale(tz = cdec.tz),
+  res = read_csv(value, locale = locale(tz = cdec.tz),
     na = "---", col_types = col.spec)
+  if (nrow(problems(res)) > 0L) {
+    problem_tf = tempfile(fileext = ".csv")
+    cat(gsub("\r\n", "\n", value), file = problem_tf)
+    warning("Parsing problems detected. Output written to ",
+      problem_tf, call. = FALSE)
+  }
+  res
 }
 
 #' cder curl handle
