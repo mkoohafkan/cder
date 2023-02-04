@@ -3,6 +3,7 @@
 <!-- badges: start -->
 [![R build status](https://github.com/mkoohafkan/cder/workflows/R-CMD-check/badge.svg)](https://github.com/mkoohafkan/cder/actions)
 ![CRAN Release](https://www.r-pkg.org/badges/version-last-release/cder)
+[![R-CMD-check](https://github.com/mkoohafkan/cder/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/mkoohafkan/cder/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 This package provides an R interface to the 
