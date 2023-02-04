@@ -19,3 +19,4 @@ vignettes/_quickstart.rmd
 ^_pkgdown\.yml$
 ^docs$
 ^pkgdown$
+^CRAN-SUBMISSION$
