@@ -11,4 +11,7 @@ test_that("URLs are valid", {
   expect_identical(attr(curlGetHeaders(stations_url), "status"), 200L)
   expect_identical(attr(curlGetHeaders(map_url), "status"), 200L)
   expect_identical(attr(curlGetHeaders(meta_url), "status"), 200L)
+  # URLs in description
+  expect_identical(attr(curlGetHeaders("http://cdec.water.ca.gov/"), "status"), 200L)
+  expect_identical(attr(curlGetHeaders("http://cdec.water.ca.gov/dynamicapp/wsSensorData"), "status"), 200L)
 })
