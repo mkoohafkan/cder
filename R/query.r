@@ -1,6 +1,8 @@
 cdec.tz = "US/Pacific"
 valid.durations = c("E", "H", "D", "M")
 
+single_query_url = "https://cdec.water.ca.gov/dynamicapp/req/CSVDataServlet"
+group_query_url = "http://cdec.water.ca.gov/dynamicapp/req/CSVGroupServlet"
 
 #' @importFrom readr problems
 #' @export
@@ -33,7 +35,6 @@ readr::problems
 #' @importFrom stringr str_c str_to_upper str_sub
 #' @importFrom lubridate as_date
 #' @importFrom glue glue
-#' @importFrom rlang .data
 #' @export
 cdec_query = function(stations, sensors, durations, start.date, end.date, ...) {
   if (missing(stations)) {
@@ -70,21 +71,21 @@ cdec_query = function(stations, sensors, durations, start.date, end.date, ...) {
   }
   # query
   result = basic_query(
-    glue("https://cdec.water.ca.gov/dynamicapp/req/CSVDataServlet?",
+    glue("{single_query_url}?",
       "{station.comp}", "{sensor.comp}", "{duration.comp}",
       "{start.comp}", "{end.comp}"),
     station.spec
   )
   rename(result,
-    StationID = .data$STATION_ID,
-    DateTime = .data$`DATE TIME`,
-    SensorType = .data$SENSOR_TYPE,
-    Value = .data$VALUE,
-    DataFlag = .data$DATA_FLAG,
-    SensorUnits = .data$UNITS,
-    SensorNumber = .data$SENSOR_NUMBER,
-    Duration = .data$DURATION,
-    ObsDate = .data$`OBS DATE`
+    StationID = "STATION_ID",
+    DateTime = "DATE TIME",
+    SensorType = "SENSOR_TYPE",
+    Value = "VALUE",
+    DataFlag = "DATA_FLAG",
+    SensorUnits = "UNITS",
+    SensorNumber = "SENSOR_NUMBER",
+    Duration = "DURATION",
+    ObsDate = "OBS DATE"
   )
 }
 
@@ -109,7 +110,6 @@ cdec_query = function(stations, sensors, durations, start.date, end.date, ...) {
 #' @importFrom stringr str_c str_to_upper str_sub
 #' @importFrom lubridate as_date
 #' @importFrom glue glue
-#' @importFrom rlang .data
 #' @export
 cdec_query_group = function(groups, start.date, end.date, ...) {
   if (missing(groups)) {
@@ -131,21 +131,21 @@ cdec_query_group = function(groups, start.date, end.date, ...) {
   }
   # query
   result = basic_query(
-    glue("http://cdec.water.ca.gov/dynamicapp/req/CSVGroupServlet?",
+    glue("{group_query_url}?",
       "{group.comp}", "{start.comp}", "{end.comp}"),
     group.spec
   )
   rename(result,
-    StationID = .data$STATION_ID,
-    DateTime = .data$ACTUAL_DATE,
-    SensorType = .data$SENSOR_TYPE,
-    Value = .data$VALUE,
-    DataFlag = .data$DATA_FLAG,
-    SensorUnits = .data$UNITS,
-    SensorNumber = .data$SENSOR_NUM,
-    Duration = .data$DUR_CODE,
-    ObsDate = .data$OBS_DATE
-    )
+    StationID = "STATION_ID",
+    DateTime = "ACTUAL_DATE",
+    SensorType = "SENSOR_TYPE",
+    Value = "VALUE",
+    DataFlag = "DATA_FLAG",
+    SensorUnits = "UNITS",
+    SensorNumber = "SENSOR_NUM",
+    Duration = "DUR_CODE",
+    ObsDate = "OBS_DATE"
+  )
 }
 
 #' Basic Query
