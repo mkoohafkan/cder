@@ -1,7 +1,6 @@
 # cder: Interface to CDEC <a href='https://github.com/mkoohafkan/cder'><img src='man/figures/logo.png' align="right" height="139" /></a>
 
 <!-- badges: start -->
-[![R build status](https://github.com/mkoohafkan/cder/workflows/R-CMD-check/badge.svg)](https://github.com/mkoohafkan/cder/actions)
 ![CRAN Release](https://www.r-pkg.org/badges/version-last-release/cder)
 [![R-CMD-check](https://github.com/mkoohafkan/cder/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/mkoohafkan/cder/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
