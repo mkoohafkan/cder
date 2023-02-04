@@ -1,3 +1,10 @@
+sensor_url = "https://cdec.water.ca.gov/reportapp/javareports?name=SensList"
+groups_url = "http://cdec.water.ca.gov/dynamicapp/queryGroup?s=&get_list=y"
+flags_url = "https://cdec.water.ca.gov/reportapp/javareports?name=FlagList"
+stations_url = "http://cdec.water.ca.gov/dynamicapp/staSearch"
+map_url = "https://cdec.water.ca.gov/webgis/?appid=cdecstation"
+meta_url = "http://cdec.water.ca.gov/dynamicapp/staMeta"
+
 #' CDEC Station Metadata
 #'
 #' Open the Metadata page for a station.
@@ -7,7 +14,7 @@
 #' @importFrom glue glue
 #' @export
 cdec_meta = function(station, ...) {
-  browseURL(url = glue("http://cdec.water.ca.gov/dynamicapp/staMeta?station_id={station}"), ...)
+  browseURL(url = glue("{meta_url}?station_id={station}"), ...)
 }
 
 #' CDEC Sensor Information
@@ -17,7 +24,7 @@ cdec_meta = function(station, ...) {
 #'
 #' @export
 cdec_sensors = function(...) {
-  browseURL(url = "https://cdec.water.ca.gov/reportapp/javareports?name=SensList", ...)
+  browseURL(url = sensor_url, ...)
 }
 
 #' CDEC Data Flag Information
@@ -27,7 +34,7 @@ cdec_sensors = function(...) {
 #'
 #' @export
 cdec_data_flags = function(...) {
-  browseURL(url = "https://cdec.water.ca.gov/reportapp/javareports?name=FlagList", ...)
+  browseURL(url = flags_url, ...)
 }
 
 #' CDEC Search Pages
@@ -40,17 +47,17 @@ NULL
 #' @importFrom utils browseURL
 #' @export
 cdec_search_groups = function(...) {
-  browseURL(url = "http://cdec.water.ca.gov/dynamicapp/queryGroup?s=&get_list=y", ...)
+  browseURL(url = groups_url, ...)
 }
 
 #' @describeIn cdec-search CDEC Station search page.
 #' @export
 cdec_search_stations = function(...) {
-  browseURL(url = "http://cdec.water.ca.gov/dynamicapp/staSearch", ...)
+  browseURL(url = stations_url, ...)
 }
 
 #' @describeIn cdec-search CDEC Map locator page.
 #' @export
 cdec_map = function(...) {
-  browseURL(url = "http://cdec.water.ca.gov/cdecstation2/", ...)
+  browseURL(url = map_url, ...)
 }
