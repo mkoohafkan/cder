@@ -22,7 +22,7 @@ The R package `cder` provides a simple interface to the CDEC
 Webservice. Getting CDEC data with `cder` is easy, just pass a 
 station code to `cdec_query()`:
 
-```{r}
+```{r eval=FALSE}
 # get data for CDEC station NSL
 cdec_query("NSL")
 ```
@@ -36,30 +36,29 @@ default. It's generally a good idea to specify these yourself:
 station = "NSL"
 duration = "event" # or "E"
 sensor = 100 # electrical conductivity
-start.date = Sys.Date() - 14
-end.date = Sys.Date()
+start.date = "2023-01-01"
+end.date = "2023-01-05"
 
 cdec_query(station, sensor, duration, start.date, end.date)
 ```
 
-The web service supports multiple stations, sensors, and even 
-duration codes:
+The web service supports multiple stations and sensors:
 
 ```{r}
 # get data for CDEC stations NSL and HUN
 stations = c("NSL", "HUN")
 # get electrical conductivity and stage
 sensors = c(100, 1)
-# get event data and hourly averages (where available)
-durations = c("event", "hourly")
+start.date = "2023-01-01"
+end.date = "2023-01-05"
 
-cdec_query(stations, sensors, durations)
+cdec_query(stations, sensors, "hourly", start.date, end.date)
 ```
 
 That's it! The CDEC Webservice currently does not support querying 
 station metadata. To browse station data, use the 
-[Station Search tool](https://cdec.water.ca.gov/dynamicapp/staSearch)
-or [Locator Map](http://cdec.water.ca.gov/cdecstation2/). These
+[Station Search tool](`r stations_url`)
+or [Locator Map](`r map_url`). These
 URLs can also be accessed by calling `cdec_search_stations()` and 
 `cdec_map()`, respectively. See `help("cdec-search")` for more 
 information.To access the metadata page for a particular station, use
