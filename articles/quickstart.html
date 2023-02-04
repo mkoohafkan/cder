@@ -88,7 +88,7 @@
       <h1 data-toc-skip>Quick Start with CDER</h1>
                         <h4 data-toc-skip class="author">Michael Koohafkan</h4>
             
-            <h4 data-toc-skip class="date">2020-06-12</h4>
+            <h4 data-toc-skip class="date">2023-02-04</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/mkoohafkan/cder/blob/HEAD/vignettes/quickstart.rmd" class="external-link"><code>vignettes/quickstart.rmd</code></a></small>
       <div class="hidden name"><code>quickstart.rmd</code></div>
@@ -100,72 +100,59 @@
 <p>The R package <code>cder</code> provides a simple interface to the CDEC Webservice. Getting CDEC data with <code>cder</code> is easy, just pass a station code to <code><a href="../reference/cdec_query.html">cdec_query()</a></code>:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># get data for CDEC station NSL</span></span>
-<span><span class="fu"><a href="../reference/cdec_query.html">cdec_query</a></span><span class="op">(</span><span class="st">"NSL"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; # A tibble: 578 x 9</span></span>
-<span><span class="co">#&gt;    StationID Duration SensorNumber SensorType DateTime           </span></span>
-<span><span class="co">#&gt;    &lt;chr&gt;     &lt;chr&gt;           &lt;int&gt; &lt;chr&gt;      &lt;dttm&gt;             </span></span>
-<span><span class="co">#&gt;  1 NSL       E                   1 RIV STG    2020-06-11 19:30:00</span></span>
-<span><span class="co">#&gt;  2 NSL       E                   1 RIV STG    2020-06-11 19:45:00</span></span>
-<span><span class="co">#&gt;  3 NSL       E                   1 RIV STG    2020-06-11 20:00:00</span></span>
-<span><span class="co">#&gt;  4 NSL       E                   1 RIV STG    2020-06-11 20:15:00</span></span>
-<span><span class="co">#&gt;  5 NSL       E                   1 RIV STG    2020-06-11 20:30:00</span></span>
-<span><span class="co">#&gt;  6 NSL       E                   1 RIV STG    2020-06-11 20:45:00</span></span>
-<span><span class="co">#&gt;  7 NSL       E                   1 RIV STG    2020-06-11 21:00:00</span></span>
-<span><span class="co">#&gt;  8 NSL       E                   1 RIV STG    2020-06-11 21:15:00</span></span>
-<span><span class="co">#&gt;  9 NSL       E                   1 RIV STG    2020-06-11 21:30:00</span></span>
-<span><span class="co">#&gt; 10 NSL       E                   1 RIV STG    2020-06-11 21:45:00</span></span>
-<span><span class="co">#&gt; # ... with 568 more rows, and 4 more variables: ObsDate &lt;dttm&gt;,</span></span>
-<span><span class="co">#&gt; #   Value &lt;dbl&gt;, DataFlag &lt;chr&gt;, SensorUnits &lt;chr&gt;</span></span></code></pre></div>
+<span><span class="fu"><a href="../reference/cdec_query.html">cdec_query</a></span><span class="op">(</span><span class="st">"NSL"</span><span class="op">)</span></span></code></pre></div>
 <p>The CDEC web service uses some default values for the duration code, sensor number, and start/end dates. However, these default values vary from station to station, and sometimes a station will return no data by default. It’s generally a good idea to specify these yourself:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">station</span> <span class="op">=</span> <span class="st">"NSL"</span></span>
 <span><span class="va">duration</span> <span class="op">=</span> <span class="st">"event"</span> <span class="co"># or "E"</span></span>
 <span><span class="va">sensor</span> <span class="op">=</span> <span class="fl">100</span> <span class="co"># electrical conductivity</span></span>
-<span><span class="va">start.date</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.Date</a></span><span class="op">(</span><span class="op">)</span> <span class="op">-</span> <span class="fl">14</span></span>
-<span><span class="va">end.date</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.Date</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">start.date</span> <span class="op">=</span> <span class="st">"2023-01-01"</span></span>
+<span><span class="va">end.date</span> <span class="op">=</span> <span class="st">"2023-01-05"</span></span>
 <span></span>
 <span><span class="fu"><a href="../reference/cdec_query.html">cdec_query</a></span><span class="op">(</span><span class="va">station</span>, <span class="va">sensor</span>, <span class="va">duration</span>, <span class="va">start.date</span>, <span class="va">end.date</span><span class="op">)</span></span>
-<span><span class="co">#&gt; # A tibble: 1,345 x 9</span></span>
-<span><span class="co">#&gt;    StationID Duration SensorNumber SensorType DateTime           </span></span>
-<span><span class="co">#&gt;    &lt;chr&gt;     &lt;chr&gt;           &lt;int&gt; &lt;chr&gt;      &lt;dttm&gt;             </span></span>
-<span><span class="co">#&gt;  1 NSL       E                 100 EL COND    2020-05-29 00:00:00</span></span>
-<span><span class="co">#&gt;  2 NSL       E                 100 EL COND    2020-05-29 00:15:00</span></span>
-<span><span class="co">#&gt;  3 NSL       E                 100 EL COND    2020-05-29 00:30:00</span></span>
-<span><span class="co">#&gt;  4 NSL       E                 100 EL COND    2020-05-29 00:45:00</span></span>
-<span><span class="co">#&gt;  5 NSL       E                 100 EL COND    2020-05-29 01:00:00</span></span>
-<span><span class="co">#&gt;  6 NSL       E                 100 EL COND    2020-05-29 01:15:00</span></span>
-<span><span class="co">#&gt;  7 NSL       E                 100 EL COND    2020-05-29 01:30:00</span></span>
-<span><span class="co">#&gt;  8 NSL       E                 100 EL COND    2020-05-29 01:45:00</span></span>
-<span><span class="co">#&gt;  9 NSL       E                 100 EL COND    2020-05-29 02:00:00</span></span>
-<span><span class="co">#&gt; 10 NSL       E                 100 EL COND    2020-05-29 02:15:00</span></span>
-<span><span class="co">#&gt; # ... with 1,335 more rows, and 4 more variables: ObsDate &lt;dttm&gt;,</span></span>
-<span><span class="co">#&gt; #   Value &lt;dbl&gt;, DataFlag &lt;chr&gt;, SensorUnits &lt;chr&gt;</span></span></code></pre></div>
-<p>The web service supports multiple stations, sensors, and even duration codes:</p>
+<span><span class="co">#&gt; # A tibble: 385 × 9</span></span>
+<span><span class="co">#&gt;    Stati…¹ Durat…² Senso…³ Senso…⁴ DateTime            ObsDate             Value</span></span>
+<span><span class="co">#&gt;    &lt;chr&gt;   &lt;chr&gt;     &lt;int&gt; &lt;chr&gt;   &lt;dttm&gt;              &lt;dttm&gt;              &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt;  1 NSL     E           100 EL COND 2023-01-01 00:00:00 2023-01-01 00:00:00  6015</span></span>
+<span><span class="co">#&gt;  2 NSL     E           100 EL COND 2023-01-01 00:15:00 2023-01-01 00:15:00  6019</span></span>
+<span><span class="co">#&gt;  3 NSL     E           100 EL COND 2023-01-01 00:30:00 2023-01-01 00:30:00  6075</span></span>
+<span><span class="co">#&gt;  4 NSL     E           100 EL COND 2023-01-01 00:45:00 2023-01-01 00:45:00  6151</span></span>
+<span><span class="co">#&gt;  5 NSL     E           100 EL COND 2023-01-01 01:00:00 2023-01-01 01:00:00  6283</span></span>
+<span><span class="co">#&gt;  6 NSL     E           100 EL COND 2023-01-01 01:15:00 2023-01-01 01:15:00  6310</span></span>
+<span><span class="co">#&gt;  7 NSL     E           100 EL COND 2023-01-01 01:30:00 2023-01-01 01:30:00  6360</span></span>
+<span><span class="co">#&gt;  8 NSL     E           100 EL COND 2023-01-01 01:45:00 2023-01-01 01:45:00  6408</span></span>
+<span><span class="co">#&gt;  9 NSL     E           100 EL COND 2023-01-01 02:00:00 2023-01-01 02:00:00  6425</span></span>
+<span><span class="co">#&gt; 10 NSL     E           100 EL COND 2023-01-01 02:15:00 2023-01-01 02:15:00  6444</span></span>
+<span><span class="co">#&gt; # … with 375 more rows, 2 more variables: DataFlag &lt;chr&gt;, SensorUnits &lt;chr&gt;,</span></span>
+<span><span class="co">#&gt; #   and abbreviated variable names ¹​StationID, ²​Duration, ³​SensorNumber,</span></span>
+<span><span class="co">#&gt; #   ⁴​SensorType</span></span></code></pre></div>
+<p>The web service supports multiple stations and sensors:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># get data for CDEC stations NSL and HUN</span></span>
 <span><span class="va">stations</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"NSL"</span>, <span class="st">"HUN"</span><span class="op">)</span></span>
 <span><span class="co"># get electrical conductivity and stage</span></span>
 <span><span class="va">sensors</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">100</span>, <span class="fl">1</span><span class="op">)</span></span>
-<span><span class="co"># get event data and hourly averages (where available)</span></span>
-<span><span class="va">durations</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"event"</span>, <span class="st">"hourly"</span><span class="op">)</span></span>
+<span><span class="va">start.date</span> <span class="op">=</span> <span class="st">"2023-01-01"</span></span>
+<span><span class="va">end.date</span> <span class="op">=</span> <span class="st">"2023-01-05"</span></span>
 <span></span>
-<span><span class="fu"><a href="../reference/cdec_query.html">cdec_query</a></span><span class="op">(</span><span class="va">stations</span>, <span class="va">sensors</span>, <span class="va">durations</span><span class="op">)</span></span>
-<span><span class="co">#&gt; # A tibble: 240 x 9</span></span>
-<span><span class="co">#&gt;    StationID Duration SensorNumber SensorType DateTime           </span></span>
-<span><span class="co">#&gt;    &lt;chr&gt;     &lt;chr&gt;           &lt;int&gt; &lt;chr&gt;      &lt;dttm&gt;             </span></span>
-<span><span class="co">#&gt;  1 HUN       E                   1 RIV STG    2020-06-11 19:30:00</span></span>
-<span><span class="co">#&gt;  2 HUN       E                   1 RIV STG    2020-06-11 19:45:00</span></span>
-<span><span class="co">#&gt;  3 HUN       E                   1 RIV STG    2020-06-11 20:00:00</span></span>
-<span><span class="co">#&gt;  4 HUN       E                   1 RIV STG    2020-06-11 20:15:00</span></span>
-<span><span class="co">#&gt;  5 HUN       E                   1 RIV STG    2020-06-11 20:30:00</span></span>
-<span><span class="co">#&gt;  6 HUN       E                   1 RIV STG    2020-06-11 20:45:00</span></span>
-<span><span class="co">#&gt;  7 HUN       E                   1 RIV STG    2020-06-11 21:00:00</span></span>
-<span><span class="co">#&gt;  8 HUN       E                   1 RIV STG    2020-06-11 21:15:00</span></span>
-<span><span class="co">#&gt;  9 HUN       E                   1 RIV STG    2020-06-11 21:30:00</span></span>
-<span><span class="co">#&gt; 10 HUN       E                   1 RIV STG    2020-06-11 21:45:00</span></span>
-<span><span class="co">#&gt; # ... with 230 more rows, and 4 more variables: ObsDate &lt;dttm&gt;,</span></span>
-<span><span class="co">#&gt; #   Value &lt;dbl&gt;, DataFlag &lt;chr&gt;, SensorUnits &lt;chr&gt;</span></span></code></pre></div>
-<p>That’s it! The CDEC Webservice currently does not support querying station metadata. To browse station data, use the <a href="https://cdec.water.ca.gov/dynamicapp/staSearch" class="external-link">Station Search tool</a> or <a href="http://cdec.water.ca.gov/cdecstation2/" class="external-link">Locator Map</a>. These URLs can also be accessed by calling <code><a href="../reference/cdec-search.html">cdec_search_stations()</a></code> and <code><a href="../reference/cdec-search.html">cdec_map()</a></code>, respectively. See <code><a href="../reference/cdec-search.html">help("cdec-search")</a></code> for more information.To access the metadata page for a particular station, use <code><a href="../reference/cdec_meta.html">cdec_meta()</a></code>.</p>
+<span><span class="fu"><a href="../reference/cdec_query.html">cdec_query</a></span><span class="op">(</span><span class="va">stations</span>, <span class="va">sensors</span>, <span class="st">"hourly"</span>, <span class="va">start.date</span>, <span class="va">end.date</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 388 × 9</span></span>
+<span><span class="co">#&gt;    Stati…¹ Durat…² Senso…³ Senso…⁴ DateTime            ObsDate             Value</span></span>
+<span><span class="co">#&gt;    &lt;chr&gt;   &lt;chr&gt;     &lt;int&gt; &lt;chr&gt;   &lt;dttm&gt;              &lt;dttm&gt;              &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt;  1 NSL     H           100 EL COND 2023-01-01 00:00:00 2023-01-01 00:00:00  6015</span></span>
+<span><span class="co">#&gt;  2 NSL     H           100 EL COND 2023-01-01 01:00:00 2023-01-01 01:00:00  6283</span></span>
+<span><span class="co">#&gt;  3 NSL     H           100 EL COND 2023-01-01 02:00:00 2023-01-01 02:00:00  6425</span></span>
+<span><span class="co">#&gt;  4 NSL     H           100 EL COND 2023-01-01 03:00:00 2023-01-01 03:00:00  6471</span></span>
+<span><span class="co">#&gt;  5 NSL     H           100 EL COND 2023-01-01 04:00:00 2023-01-01 04:00:00  6230</span></span>
+<span><span class="co">#&gt;  6 NSL     H           100 EL COND 2023-01-01 05:00:00 2023-01-01 05:00:00  5925</span></span>
+<span><span class="co">#&gt;  7 NSL     H           100 EL COND 2023-01-01 06:00:00 2023-01-01 06:00:00  4668</span></span>
+<span><span class="co">#&gt;  8 NSL     H           100 EL COND 2023-01-01 07:00:00 2023-01-01 07:00:00  3991</span></span>
+<span><span class="co">#&gt;  9 NSL     H           100 EL COND 2023-01-01 08:00:00 2023-01-01 08:00:00  3700</span></span>
+<span><span class="co">#&gt; 10 NSL     H           100 EL COND 2023-01-01 09:00:00 2023-01-01 09:00:00  4757</span></span>
+<span><span class="co">#&gt; # … with 378 more rows, 2 more variables: DataFlag &lt;chr&gt;, SensorUnits &lt;chr&gt;,</span></span>
+<span><span class="co">#&gt; #   and abbreviated variable names ¹​StationID, ²​Duration, ³​SensorNumber,</span></span>
+<span><span class="co">#&gt; #   ⁴​SensorType</span></span></code></pre></div>
+<p>That’s it! The CDEC Webservice currently does not support querying station metadata. To browse station data, use the <a href="http://cdec.water.ca.gov/dynamicapp/staSearch" class="external-link">Station Search tool</a> or <a href="https://cdec.water.ca.gov/webgis/?appid=cdecstation" class="external-link">Locator Map</a>. These URLs can also be accessed by calling <code><a href="../reference/cdec-search.html">cdec_search_stations()</a></code> and <code><a href="../reference/cdec-search.html">cdec_map()</a></code>, respectively. See <code><a href="../reference/cdec-search.html">help("cdec-search")</a></code> for more information.To access the metadata page for a particular station, use <code><a href="../reference/cdec_meta.html">cdec_meta()</a></code>.</p>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
