@@ -88,7 +88,7 @@
       <h1 data-toc-skip>Quick Start with CDER</h1>
                         <h4 data-toc-skip class="author">Michael Koohafkan</h4>
             
-            <h4 data-toc-skip class="date">2023-02-04</h4>
+            <h4 data-toc-skip class="date">2023-02-12</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/mkoohafkan/cder/blob/HEAD/vignettes/quickstart.rmd" class="external-link"><code>vignettes/quickstart.rmd</code></a></small>
       <div class="hidden name"><code>quickstart.rmd</code></div>
@@ -152,6 +152,11 @@
 <span><span class="co">#&gt; # … with 378 more rows, 2 more variables: DataFlag &lt;chr&gt;, SensorUnits &lt;chr&gt;,</span></span>
 <span><span class="co">#&gt; #   and abbreviated variable names ¹​StationID, ²​Duration, ³​SensorNumber,</span></span>
 <span><span class="co">#&gt; #   ⁴​SensorType</span></span></code></pre></div>
+<p>Certain CDEC stations may store non-numeric data flags in the Value column instead of in the DataFlag column, resulting in parsing issues. For example, flow data at SGN (Sugar Creek near Callahan) will sometimes use the codes “ART” and “BRT” to signify discharge at stages above or below the available rating table. <code>cder</code> reexports <code><a href="https://readr.tidyverse.org/reference/problems.html" class="external-link">readr::problems()</a></code> to allow you to view these parsing problems, and additionally writes the problematic rows to a temporary file to facilitate further investigation.</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">sgn</span> <span class="op">=</span> <span class="fu"><a href="../reference/cdec_query.html">cdec_query</a></span><span class="op">(</span><span class="st">'SGN'</span>, <span class="fl">20</span>, start.date <span class="op">=</span> <span class="st">"2022-07-02"</span>,</span>
+<span>  end.date <span class="op">=</span> <span class="st">"2022-07-03"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://readr.tidyverse.org/reference/problems.html" class="external-link">problems</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>That’s it! The CDEC Webservice currently does not support querying station metadata. To browse station data, use the <a href="http://cdec.water.ca.gov/dynamicapp/staSearch" class="external-link">Station Search tool</a> or <a href="https://cdec.water.ca.gov/webgis/?appid=cdecstation" class="external-link">Locator Map</a>. These URLs can also be accessed by calling <code><a href="../reference/cdec-search.html">cdec_search_stations()</a></code> and <code><a href="../reference/cdec-search.html">cdec_map()</a></code>, respectively. See <code><a href="../reference/cdec-search.html">help("cdec-search")</a></code> for more information.To access the metadata page for a particular station, use <code><a href="../reference/cdec_meta.html">cdec_meta()</a></code>.</p>
   </div>
 
