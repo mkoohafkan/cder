@@ -156,6 +156,12 @@
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">sgn</span> <span class="op">=</span> <span class="fu"><a href="../reference/cdec_query.html">cdec_query</a></span><span class="op">(</span><span class="st">'SGN'</span>, <span class="fl">20</span>, start.date <span class="op">=</span> <span class="st">"2022-07-02"</span>,</span>
 <span>  end.date <span class="op">=</span> <span class="st">"2022-07-03"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning: One or more parsing issues, call `problems()` on your data</span></span>
+<span><span class="co">#&gt; frame for details, e.g.:</span></span>
+<span><span class="co">#&gt;   dat &lt;- vroom(...)</span></span>
+<span><span class="co">#&gt;   problems(dat)</span></span>
+<span><span class="co">#&gt; Warning: Parsing problems detected. Output written to</span></span>
+<span><span class="co">#&gt; C:\Users\michael\AppData\Local\Temp\RtmpMrpket\file2a102f806bfd.csv</span></span>
 <span><span class="fu"><a href="https://readr.tidyverse.org/reference/problems.html" class="external-link">problems</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>That’s it! The CDEC Webservice currently does not support querying station metadata. To browse station data, use the <a href="http://cdec.water.ca.gov/dynamicapp/staSearch" class="external-link">Station Search tool</a> or <a href="https://cdec.water.ca.gov/webgis/?appid=cdecstation" class="external-link">Locator Map</a>. These URLs can also be accessed by calling <code><a href="../reference/cdec-search.html">cdec_search_stations()</a></code> and <code><a href="../reference/cdec-search.html">cdec_map()</a></code>, respectively. See <code><a href="../reference/cdec-search.html">help("cdec-search")</a></code> for more information.To access the metadata page for a particular station, use <code><a href="../reference/cdec_meta.html">cdec_meta()</a></code>.</p>
   </div>
