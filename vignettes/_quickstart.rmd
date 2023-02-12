@@ -55,6 +55,21 @@ end.date = "2023-01-05"
 cdec_query(stations, sensors, "hourly", start.date, end.date)
 ```
 
+Certain CDEC stations may store non-numeric data flags in the Value
+column instead of in the DataFlag column, resulting in parsing issues.
+For example, flow data at SGN (Sugar Creek near Callahan) will
+sometimes use the codes "ART" and "BRT" to signify discharge at stages
+above or below the available rating table. `cder` reexports 
+`readr::problems()` to allow you to view these parsing problems, and
+additionally writes the problematic rows to a temporary file to
+facilitate further investigation.
+
+```r
+sgn = cdec_query('SGN', 20, start.date = "2022-07-02",
+  end.date = "2022-07-03")
+problems()
+```
+
 That's it! The CDEC Webservice currently does not support querying 
 station metadata. To browse station data, use the 
 [Station Search tool](`r stations_url`)

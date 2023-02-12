@@ -1,7 +1,7 @@
 ---
 title: "Quick Start with CDER"
 author: "Michael Koohafkan"
-date: "2023-02-04"
+date: "2023-02-12"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Quick Start}
@@ -82,6 +82,21 @@ cdec_query(stations, sensors, "hourly", start.date, end.date)
 #> # … with 378 more rows, 2 more variables: DataFlag <chr>, SensorUnits <chr>,
 #> #   and abbreviated variable names ¹​StationID, ²​Duration, ³​SensorNumber,
 #> #   ⁴​SensorType
+```
+
+Certain CDEC stations may store non-numeric data flags in the Value
+column instead of in the DataFlag column, resulting in parsing issues.
+For example, flow data at SGN (Sugar Creek near Callahan) will
+sometimes use the codes "ART" and "BRT" to signify discharge at stages
+above or below the available rating table. `cder` reexports 
+`readr::problems()` to allow you to view these parsing problems, and
+additionally writes the problematic rows to a temporary file to
+facilitate further investigation.
+
+```r
+sgn = cdec_query('SGN', 20, start.date = "2022-07-02",
+  end.date = "2022-07-03")
+problems()
 ```
 
 That's it! The CDEC Webservice currently does not support querying 
