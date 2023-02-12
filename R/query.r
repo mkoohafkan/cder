@@ -156,7 +156,8 @@ cdec_query_group = function(groups, start.date, end.date, ...) {
 #' @return A dataframe.
 #'
 #' @importFrom curl curl_fetch_memory parse_headers
-#' @importFrom readr locale read_csv
+#' @importFrom readr locale read_csv problems
+#' @importFrom stringr str_split
 #' @keywords internal
 basic_query = function(url, col.spec) {
   result = curl_fetch_memory(url, handle = cder_handle())
@@ -172,7 +173,9 @@ basic_query = function(url, col.spec) {
     na = "---", col_types = col.spec)
   if (nrow(problems(res)) > 0L) {
     problem_tf = tempfile(fileext = ".csv")
-    cat(gsub("\r\n", "\n", value), file = problem_tf)
+    problem_rows = str_split(value, "\r\n",
+      simplify = TRUE)[c(1, problems(res)$row)]
+    writeLines(problem_rows, problem_tf)
     warning("Parsing problems detected. Output written to ",
       problem_tf, call. = FALSE)
   }
