@@ -102,8 +102,12 @@ sgn = cdec_query('SGN', 20, start.date = "2022-07-02",
 #>   dat <- vroom(...)
 #>   problems(dat)
 #> Warning: Parsing problems detected. Output written to
-#> C:\Users\michael\AppData\Local\Temp\RtmpMrpket\file2a102f806bfd.csv
-problems()
+#> C:\Users\michael\AppData\Local\Temp\RtmpqOnwQX\file478447f97f36.csv
+problems(sgn)
+#> # A tibble: 1 × 5
+#>     row   col expected actual file                                              
+#>   <int> <int> <chr>    <chr>  <chr>                                             
+#> 1    26     7 a double BRT    C:/Users/michael/AppData/Local/Temp/RtmpqOnwQX/fi…
 ```
 
 That's it! The CDEC Webservice currently does not support querying 

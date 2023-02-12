@@ -67,7 +67,7 @@ facilitate further investigation.
 ```{r}
 sgn = cdec_query('SGN', 20, start.date = "2022-07-02",
   end.date = "2022-07-03")
-problems()
+problems(sgn)
 ```
 
 That's it! The CDEC Webservice currently does not support querying 
