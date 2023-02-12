@@ -64,7 +64,7 @@ above or below the available rating table. `cder` reexports
 additionally writes the problematic rows to a temporary file to
 facilitate further investigation.
 
-```r
+```{r}
 sgn = cdec_query('SGN', 20, start.date = "2022-07-02",
   end.date = "2022-07-03")
 problems()

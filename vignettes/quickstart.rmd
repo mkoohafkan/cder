@@ -93,9 +93,16 @@ above or below the available rating table. `cder` reexports
 additionally writes the problematic rows to a temporary file to
 facilitate further investigation.
 
+
 ```r
 sgn = cdec_query('SGN', 20, start.date = "2022-07-02",
   end.date = "2022-07-03")
+#> Warning: One or more parsing issues, call `problems()` on your data
+#> frame for details, e.g.:
+#>   dat <- vroom(...)
+#>   problems(dat)
+#> Warning: Parsing problems detected. Output written to
+#> C:\Users\michael\AppData\Local\Temp\RtmpMrpket\file2a102f806bfd.csv
 problems()
 ```
 
