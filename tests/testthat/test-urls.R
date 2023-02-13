@@ -1,5 +1,5 @@
 test_that("URLs are valid", {
-  skip_on_cran()
+  skip_if_offline("cdec.water.ca.gov")
 
   # these should fail with code 500
   expect_identical(attr(curlGetHeaders(single_query_url), "status"), 500L)
