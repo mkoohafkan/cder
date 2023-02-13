@@ -7,6 +7,8 @@ test_that("query works", {
 
 
 test_that("vignette queries work", {
+  skip_on_cran()
+
   station = "NSL"
   duration = "event" # or "E"
   sensor = 100 # electrical conductivity
