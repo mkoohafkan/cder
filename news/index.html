@@ -62,9 +62,9 @@
 <div class="section level3">
 <h3 id="minor-changes-0-3-0">Minor changes<a class="anchor" aria-label="anchor" href="#minor-changes-0-3-0"></a></h3>
 <ul><li>
-<code>cder</code> now reexports readr::problems() so that users can review parsing issues without loading readr</li>
+<code>cder</code> now reexports <code><a href="https://readr.tidyverse.org/reference/problems.html" class="external-link">readr::problems()</a></code> so that users can review parsing issues without loading <code>readr</code>.</li>
 <li>
-<code>cder</code> now writes the downloaded data to a tempfile when problems are encountered so that the user can review reprocess using an alternate approach if needed.</li>
+<code>cder</code> now writes the unparsed lines to a tempfile when problems are encountered so that the user can review and reprocess using an alternate approach if needed.</li>
 </ul></div>
 </div>
     <div class="section level2">
