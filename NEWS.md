@@ -1,3 +1,9 @@
+# cder 0.3-1
+
+- This patch version fixes an issue in package tests that cause CRAN
+  checks to occasionally fail.
+
+
 # cder 0.3-0
 
 ## Minor changes

@@ -1,6 +1,6 @@
 Package: cder
 Title: Interface to the California Data Exchange Center (CDEC)
-Version: 0.3-0
+Version: 0.3-1
 Authors@R: 
     person(given = "Michael",
            family = "Koohafkan",
