@@ -82,11 +82,12 @@
 
       
 
-      </header><script src="quickstart_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Quick Start with CDER</h1>
-                        <h4 data-toc-skip class="author">Michael Koohafkan</h4>
+                        <h4 data-toc-skip class="author">Michael
+Koohafkan</h4>
             
             <h4 data-toc-skip class="date">2023-02-12</h4>
       
@@ -97,11 +98,16 @@
 
     
     
-<p>The R package <code>cder</code> provides a simple interface to the CDEC Webservice. Getting CDEC data with <code>cder</code> is easy, just pass a station code to <code><a href="../reference/cdec_query.html">cdec_query()</a></code>:</p>
+<p>The R package <code>cder</code> provides a simple interface to the
+CDEC Webservice. Getting CDEC data with <code>cder</code> is easy, just
+pass a station code to <code><a href="../reference/cdec_query.html">cdec_query()</a></code>:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># get data for CDEC station NSL</span></span>
 <span><span class="fu"><a href="../reference/cdec_query.html">cdec_query</a></span><span class="op">(</span><span class="st">"NSL"</span><span class="op">)</span></span></code></pre></div>
-<p>The CDEC web service uses some default values for the duration code, sensor number, and start/end dates. However, these default values vary from station to station, and sometimes a station will return no data by default. It’s generally a good idea to specify these yourself:</p>
+<p>The CDEC web service uses some default values for the duration code,
+sensor number, and start/end dates. However, these default values vary
+from station to station, and sometimes a station will return no data by
+default. It’s generally a good idea to specify these yourself:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">station</span> <span class="op">=</span> <span class="st">"NSL"</span></span>
 <span><span class="va">duration</span> <span class="op">=</span> <span class="st">"event"</span> <span class="co"># or "E"</span></span>
@@ -152,7 +158,14 @@
 <span><span class="co">#&gt; # … with 378 more rows, 2 more variables: DataFlag &lt;chr&gt;, SensorUnits &lt;chr&gt;,</span></span>
 <span><span class="co">#&gt; #   and abbreviated variable names ¹​StationID, ²​Duration, ³​SensorNumber,</span></span>
 <span><span class="co">#&gt; #   ⁴​SensorType</span></span></code></pre></div>
-<p>Certain CDEC stations may store non-numeric data flags in the Value column instead of in the DataFlag column, resulting in parsing issues. For example, flow data at SGN (Sugar Creek near Callahan) will sometimes use the codes “ART” and “BRT” to signify discharge at stages above or below the available rating table. <code>cder</code> reexports <code><a href="https://readr.tidyverse.org/reference/problems.html" class="external-link">readr::problems()</a></code> to allow you to view these parsing problems, and additionally writes the problematic rows to a temporary file to facilitate further investigation.</p>
+<p>Certain CDEC stations may store non-numeric data flags in the Value
+column instead of in the DataFlag column, resulting in parsing issues.
+For example, flow data at SGN (Sugar Creek near Callahan) will sometimes
+use the codes “ART” and “BRT” to signify discharge at stages above or
+below the available rating table. <code>cder</code> reexports
+<code><a href="https://readr.tidyverse.org/reference/problems.html" class="external-link">readr::problems()</a></code> to allow you to view these parsing
+problems, and additionally writes the problematic rows to a temporary
+file to facilitate further investigation.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">sgn</span> <span class="op">=</span> <span class="fu"><a href="../reference/cdec_query.html">cdec_query</a></span><span class="op">(</span><span class="st">'SGN'</span>, <span class="fl">20</span>, start.date <span class="op">=</span> <span class="st">"2022-07-02"</span>,</span>
 <span>  end.date <span class="op">=</span> <span class="st">"2022-07-03"</span><span class="op">)</span></span>
@@ -167,7 +180,14 @@
 <span><span class="co">#&gt;     row   col expected actual file                                              </span></span>
 <span><span class="co">#&gt;   &lt;int&gt; &lt;int&gt; &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt;                                             </span></span>
 <span><span class="co">#&gt; 1    26     7 a double BRT    C:/Users/michael/AppData/Local/Temp/RtmpqOnwQX/fi…</span></span></code></pre></div>
-<p>That’s it! The CDEC Webservice currently does not support querying station metadata. To browse station data, use the <a href="http://cdec.water.ca.gov/dynamicapp/staSearch" class="external-link">Station Search tool</a> or <a href="https://cdec.water.ca.gov/webgis/?appid=cdecstation" class="external-link">Locator Map</a>. These URLs can also be accessed by calling <code><a href="../reference/cdec-search.html">cdec_search_stations()</a></code> and <code><a href="../reference/cdec-search.html">cdec_map()</a></code>, respectively. See <code><a href="../reference/cdec-search.html">help("cdec-search")</a></code> for more information.To access the metadata page for a particular station, use <code><a href="../reference/cdec_meta.html">cdec_meta()</a></code>.</p>
+<p>That’s it! The CDEC Webservice currently does not support querying
+station metadata. To browse station data, use the <a href="http://cdec.water.ca.gov/dynamicapp/staSearch" class="external-link">Station Search
+tool</a> or <a href="https://cdec.water.ca.gov/webgis/?appid=cdecstation" class="external-link">Locator
+Map</a>. These URLs can also be accessed by calling
+<code><a href="../reference/cdec-search.html">cdec_search_stations()</a></code> and <code><a href="../reference/cdec-search.html">cdec_map()</a></code>,
+respectively. See <code><a href="../reference/cdec-search.html">help("cdec-search")</a></code> for more
+information.To access the metadata page for a particular station, use
+<code><a href="../reference/cdec_meta.html">cdec_meta()</a></code>.</p>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
