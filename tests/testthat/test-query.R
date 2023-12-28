@@ -14,12 +14,16 @@ test_that("vignette queries work", {
   sensor = 100 # electrical conductivity
   start.date = "2023-01-01"
   end.date = "2023-01-15"
-  cdec_query(station, sensor, duration, start.date, end.date)
+  expect_snapshot(knitr::kable(
+    cdec_query(station, sensor, duration, start.date, end.date)
+  ))
 
   stations = c("NSL", "HUN")
   sensors = c(100, 1)
   duration = "hourly"
   start.date = "2023-01-01"
   end.date = "2023-01-05"
-  expect_snapshot(cdec_query(stations, sensors, duration, start.date, end.date))
+  expect_snapshot(knitr::kable(
+    cdec_query(stations, sensors, duration, start.date, end.date),
+  ))
 })
